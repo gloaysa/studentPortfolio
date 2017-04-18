@@ -19,6 +19,7 @@
 // 		Behavior:
 // 			DynCalc will pass (a), (a,b), or (a,b,c) into ‘op.operation’’
 //      depending on the value of ‘op.args’ and return the value of the function call.
+// -----------------------------------------------------------------------------------
 
 
 //We first create our operations methods
@@ -27,9 +28,9 @@ var sum = {
   name: "Add 2 or 3 numbers", //We use 'name' & 'args' to describe our object later on
   args: "You can pass up to 3 arguments",
   operation: function(a, b, c = 0){ //Making c = 0 help us to make a 3 numbers sum even if the user just pass 2 arg.
-    var result = a + b + c;
+    var result = a + b + c; // it could be done in just one line: return a + b + c;
     return result;
-  } //
+  } 
 };
 
 var sub = {
@@ -44,7 +45,7 @@ var sub = {
 var mul = {
   name: "Multiply up to 3 numbers",
   args: "Up to 3 arguments",
-  operation: function(a, b, c = 1){ //Same that we did we sum, but now c = 1.
+  operation: function(a, b, c = 1){ //Same that we did with sum, but now c = 1.
     var result = a * b * c;
     return result;
   }
@@ -68,8 +69,8 @@ var ave = {
   }
 };
 
-// Now, we create our Calculator. What do we know about it? Reading the instruction
-// we know that it's a function and we can pass 3 args: op, a, b & c
+// Now, we create our Calculator. What do we know about it? Reading the instructions
+// we know that it's a function and we can pass 4 args: op, a, b & c
 var calc = function(op, a, b, c){
-  return op.operation(a, b, c);        //We also know that is returns something
+  return op.operation(a, b, c);        //We also know that it returns something
 }
