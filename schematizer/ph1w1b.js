@@ -33,33 +33,43 @@
 
 var example = {
   name: {
-    is: "string", //what the user should prompt?
+    whatIs: "string", //what type of data is this?
     value: "sum" //what is going to be it default opeation
   },
   arg: {
-    is: "number",
+    whatIs: 0,
     value: [1, 1]
   },
   operation: {
-    is: "function",
+    whatIs: "function",
     value: function(a, b) {return a + b;}
   }
 }
 
-//---- no we create an empty object to use later on
+//---- we create an empty object to use later on
 
 var newSchema = {}
 
 //---- Now, our Schema validation function
 // where op is going to be an object a match a function
-function validation(op){
-  for (name in op) {
-    if (typeof(op.name) === typeof(example.name.is)) {
-      newSchema.name = op.name
-    }
-  }
+function validation(op) { // waiting to add arg 'match' until 'op' works
+  Object.keys(op).forEach(function(key) {
+      if (typeof(key) === example[key].whatIs) {
+        newSchema[key] = op[key]
+      }
+  });
 }
 
+// function test(op){ // this function adds an empty key called 'key'. WHY?
+//   for (key in op) {
+//     if (typeof(key) === example[key].whatIs) {
+//       newSchema[key] = op[key]
+//     }
+//   }
+// }
+
+
+// The code below works, but it isn't smart :(
 
 
 // var newSchema = {
