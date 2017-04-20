@@ -42,6 +42,25 @@ var example = {
 var newSchema = {}
 
 //---- Now, our Schema validation function
+
+// Schema validating function:
+// 		Arguments:
+// 			op: an operation object
+// 			schema:  the schema it must match
+// 		Return values:
+// 			array: containing -
+// 				a string: tells if the match was a success or not.
+// 					        if not it tells what was wrong with the op
+// 				an op object: it returns the op object passed in
+// 					            if defaults were needed, it contains those
+// 		Behavior:
+// 			schematizer will take an object and a schema.  it will compare
+//      the object to the expectations of the schema, and return the object
+//      with a success/failure message.
+// 			if the object passes but is incomplete, it will be filled with default
+//      values. if it fails, it is returned whole
+//---------------------------------------------------------------------------
+
 function validation(schema, op){
   for (key in op) {
     if (key in schema) { //Is the key passed in our model?
@@ -56,3 +75,14 @@ function validation(schema, op){
     }
   }
 }
+
+
+// TEST SCRIPTS:
+//---------------
+// if I pass:
+// validation(example, {hola: {type: "esto funciona!!!", value: "mimimi"}, numArgs: {type: "string", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
+// it returns: "your key wasn't in the schema."
+
+// if I pass:
+// validation(example, {name: {type: "esta mierda funciona!!!", value: "sum"}, numArgs: {type: "string", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
+// it's valid, even when numArgs.type is wrong
