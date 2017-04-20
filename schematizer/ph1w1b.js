@@ -39,7 +39,7 @@ var example = {
 
 //---- we create an empty object to use later on
 
-var newSchema = {}
+var myObject = {}
 
 //---- Now, our Schema validation function
 
@@ -54,35 +54,49 @@ var newSchema = {}
 // 				an op object: it returns the op object passed in
 // 					            if defaults were needed, it contains those
 // 		Behavior:
-// 			schematizer will take an object and a schema.  it will compare
+// 			schematizer will take an object and a schema. It will compare
 //      the object to the expectations of the schema, and return the object
 //      with a success/failure message.
-// 			if the object passes but is incomplete, it will be filled with default
-//      values. if it fails, it is returned whole
+// 			1. If the object passes but is incomplete, it will be filled
+//         with default values.
+//      2. If it fails, it is returned whole.
 //---------------------------------------------------------------------------
 
-function validation(schema, op){
-  for (key in op) {
-    if (key in schema) { //Is the key passed in our model?
-      if (typeof(op[key].type) === schema[key].type) { //Is it passed correctly?
-        newSchema[key] = op[key]; //we add the new Object to our object
-        return op
-      } else {
-        return "nope"
+function schematizer(schema, op){
+  Object.keys(op).forEach(function(key) {
+    console.log("Key is ", key, " and op[key].type is ", op[key].type); //Discovered that is not the same
+  	var llave = op[key]   ;                 // console.log("text " + Object) and
+    console.log("created ", llave.type);   // console.log("text ", Object)
+    console.log(op[key]);
+    if (key in schema){ //If the key is in the example, we continue
+      console.log(key, "is in the ", schema)
+      if (llave.type === schema[key].type) { //Is it passed correctly?
+        myObject[key] = op[key]; //we add the new Object to our object
+      } else { // If not, we give the default value back
+        myObject[key] = schema[key]
+        console.log(llave.type, "isn't in the schema. Default value added");
       }
-    } else {
-      return "your key wasn't in the schema."
-    }
-  }
+    } else { //If key isn't in the example, we stop
+       myObject = {}; // empty the object
+       console.log(key, " isn't in schema");
+       throw op; // stop the forEach loop
+     }
+  });
 }
-
 
 // TEST SCRIPTS:
 //---------------
-// if I pass:
-// validation(example, {hola: {type: "esto funciona!!!", value: "mimimi"}, numArgs: {type: "string", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
-// it returns: "your key wasn't in the schema."
+// test(example, {name: {type: "number", value: "funcionó!!!!"}, numArgs: {type: "number", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
+// add the default value for propertie name.
 
-// if I pass:
-// validation(example, {name: {type: "esta mierda funciona!!!", value: "sum"}, numArgs: {type: "string", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
-// it's valid, even when numArgs.type is wrong
+// test(example, {name: {type: "string", value: "I'm sure I'm a string"}, numArgs: {type: "number", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
+// just add the new values to newString{}.
+
+//test(example, {name: {something: "string", value: "I'm sure I'm a string"}, numArgs: {type: "number", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
+// prompt an error to the user and return the whole Object passed.
+
+// CHALLANGES
+//---------------
+// have required and non-required fields.
+// remeber if an object was valid or not - maybe by storing them in
+// different locations, or adding a property, or anything else you can think of
