@@ -1,48 +1,39 @@
-// Prompt:
-// 	You're a lazy teacher and want to make sure students are writing good
-//  operations
-//
 // Your project will contain these items:
-// 	Schema object:
-// 		Properties:
-// 			Name: a string that describes what the operation does
-// 			Args: the number of arguments this operation takes
-// 		Methods:
-// 			Operation: a function that does the math
-// 	Schema validating function:
-// 		Arguments:
-// 			op: an operation object
-// 			schema:  the schema it must match
-// 		Return values:
-// 			array: containing -
-// 				a string: tells if the match was a success or not.
-// 					if not it tells what was wrong with the op
-// 				an op object: it returns the op object passed in
-// 					if defaults were needed it contains those
-// 		Behavior:
-// 			schematizer will take an object and a schema.  it will compare the
-//      object to the expectations of the schema, and return the object with
-//      a success/failure message.
-// 			if the object passes but is incomplete, it will be filled with
-//      default values. if it fails, it is returned whole
+// 	OPERATION:   objects.  as many as you like
+// 		PROPERTIES:
+// 			NAME: a string that describes what the operation does
+// 			NUMARGS: the number of arguments this operation takes
+// 		METHODS:
+// 			OPERATION: a function that does the math
+// 	SCHEME:   object
+// 		PROPERTIES:
+// 			NAME:  object
+// 				PROPERTIES:
+// 					TYPE: a string indicating the type of name
+// 					FALLBACK: a value to be used as 'name' if an operation comes in without one
+// 			NUMARGS:  object
+// 				PROPERTIES:
+// 					TYPE:  a string indicating the type of 'args'
+// 					FALLBACK:  an value to fall back on if there is no 'args'
+// 			OPERATION:  object
+// 				PROPERTIES:
+// 					TYPE: a string indicating the type of 'operation'
+// 					FALLBACK:  a default value for 'operation' if it's not included
 // ---------------------------------------------------------------------------
 
-//---- we start with our new Object example with some default values on it
-// note that we need every key of the object being an object itself, so we can
-// store default values on them
-
+// 	SCHEME: object {NAME {type, fallback}, NUMARGS{type, fallback}, OPERATION{type, fallback}}
 var example = {
   name: {
-    whatIs: "string", //what type of data is this?
-    value: "sum" //what is going to be it default opeation
+    type: "string",
+    fallback: "I'm the default name"
   },
-  arg: {
-    whatIs: 0,
-    value: [1, 1]
+  numArgs: {
+    type: "number",
+    fallback: 1
   },
   operation: {
-    whatIs: "function",
-    value: function(a, b) {return a + b;}
+    type: "function",
+    fallback: function(){console.log("I'm the default operation")}
   }
 }
 
@@ -51,50 +42,17 @@ var example = {
 var newSchema = {}
 
 //---- Now, our Schema validation function
-// where op is going to be an object a match a function
-function validation(op) { // waiting to add arg 'match' until 'op' works
-  Object.keys(op).forEach(function(key) {
-      if (typeof(key) === example[key].whatIs) {
-        newSchema[key] = op[key]
+function validation(schema, op){
+  for (key in op) {
+    if (key in schema) { //Is the key passed in our model?
+      if (typeof(op[key].type) === schema[key].type) { //Is it passed correctly?
+        newSchema[key] = op[key]; //we add the new Object to our object
+        return op
+      } else {
+        return "nope"
       }
-  });
+    } else {
+      return "your key wasn't in the schema."
+    }
+  }
 }
-
-// function test(op){ // this function adds an empty key called 'key'. WHY?
-//   for (key in op) {
-//     if (typeof(key) === example[key].whatIs) {
-//       newSchema[key] = op[key]
-//     }
-//   }
-// }
-
-
-// The code below works, but it isn't smart :(
-
-
-// var newSchema = {
-//   name: "description",
-//   arg: 0,
-//   operation: function(){
-//     return "this is the default function!";
-//   }
-// }
-//
-// //---- now the function that validates any schema passed
-// function confirm(name, arg, op){
-//   // we store the values to use them later on
-//   var array = [name, arg, op]
-//   // we check if the arguments passed are correct
-//   // we could use typeof(name) === "string" but it this way if newSchema changes, it's still valid
-//   if (typeof(name) === typeof(example.name) && typeof(arg) === typeof(example.args[is]) && typeof(op) === typeof(example.operation.is)){
-//     console.log("The operation " + array + " is correct"),
-//     // we print to console the result of the user function
-//     console.log("The result of you function is " + op() )
-//   }
-// // if they aren't correct, we pass the error
-//   else {
-//     if (typeof(name)!== typeof(example.name)) { return "Your name isn't a string"}
-//     else if (typeof(arg) !== typeof(example.args[is])) { return arg + " is not a number"}
-//     else { return op + " is not a function"};
-//   }
-// }
