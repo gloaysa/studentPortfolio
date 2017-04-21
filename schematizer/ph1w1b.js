@@ -39,7 +39,9 @@ var example = {
 
 //---- we create an empty object to use later on
 
-var myObject = {}
+var myObject = {};
+var myCollection = [];
+var addToCollection = false;
 
 //---- Now, our Schema validation function
 
@@ -63,7 +65,7 @@ var myObject = {}
 //---------------------------------------------------------------------------
 
 function schematizer(schema, op){
-  Object.keys(op).forEach(function(key) {
+  for (key in op) { //We don't use forEach because it gives problem to break the loop
     console.log("Key is ", key, " and op[key].type is ", op[key].type); //Discovered that is not the same
   	var llave = op[key]   ;                 // console.log("text " + Object) and
     console.log("created ", llave.type);   // console.log("text ", Object)
@@ -72,16 +74,25 @@ function schematizer(schema, op){
       console.log(key, "is in the ", schema)
       if (llave.type === schema[key].type) { //Is it passed correctly?
         myObject[key] = op[key]; //we add the new Object to our object
+        addToCollection = true;
       } else { // If not, we give the default value back
         myObject[key] = schema[key]
         console.log(llave.type, "isn't in the schema. Default value added");
       }
     } else { //If key isn't in the example, we stop
-       myObject = {}; // empty the object
-       console.log(key, " isn't in schema");
-       throw op; // stop the forEach loop
+        addToCollection = false;
+        myObject = {}; // empty the object
+        console.log(key, " isn't in schema");
+        return op; // stop the forEach loop
      }
-  });
+  }
+  if (addToCollection === true){
+    myCollection.push(myObject);
+    console.log(myCollection);
+    return myObject
+  } else {
+    return op
+  }
 }
 
 // TEST SCRIPTS:
@@ -95,7 +106,7 @@ function schematizer(schema, op){
 //test(example, {name: {something: "string", value: "I'm sure I'm a string"}, numArgs: {type: "number", value: 58}, operation: {type: "function", operation: function(a, b){a+b}}})
 // prompt an error to the user and return the whole Object passed.
 
-// CHALLANGES
+// CHALLENGES
 //---------------
 // have required and non-required fields.
 // remeber if an object was valid or not - maybe by storing them in
