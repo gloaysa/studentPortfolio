@@ -49,6 +49,8 @@ It will compare the object to the expectations of the schema, and return the obj
 
 ## How to use it
 
+ The function is very verbose, the main messages are in UPPERCASE.
+
  The user can create as many Objects as they like and then call them as the first
 argument of the schematizer function. To use the one provide as an example, just
 type `schematizer(example, andYourObject)`
@@ -59,3 +61,7 @@ the schema.
  The user can access to their collection of previous passed Objects calling `myCollection`.
 
  Schematizer return the new Object, so the user can store the result of the function in their own variable.
+
+## Resources
+
+[The in Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in) [The for... in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) [The if... else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) [Function return values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)

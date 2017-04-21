@@ -65,34 +65,37 @@ var addToCollection = false;
 //---------------------------------------------------------------------------
 
 function schematizer(schema, op){
-  for (key in op) { //We don't use forEach because it gives problem to break the loop
-    console.log("Key is ", key, " and op[key].type is ", op[key].type); //Discovered that is not the same
-  	var llave = op[key]   ;                 // console.log("text " + Object) and
-    console.log("created ", llave.type);   // console.log("text ", Object)
-    console.log(op[key]);
-    if (key in schema){ //If the key is in the example, we continue
+  for (key in op) { //We don't use forEach because it gives problems to break the loop.
+    console.log("Key is ", key, " and op[key].type is ", op[key].type); // | Mind that is not the same
+  	var llave = op[key]; // Creating new variable help to clarify.         | console.log("text " + Object) and
+    if (key in schema){ //If the key is in the example, we continue.       | console.log("text ", Object)
       console.log(key, "is in the ", schema)
       if (llave.type === schema[key].type) { //Is it passed correctly?
-        myObject[key] = op[key]; //we add the new Object to our object
+        myObject[key] = op[key]; //we add the new Object to our object.
         addToCollection = true;
-      } else { // If not, we give the default value back
+      } else { // If not passed properly, we give the default value back.
         myObject[key] = schema[key]
-        console.log(llave.type, "isn't in the schema. Default value added");
+        console.log(llave.type, "isn't in the schema. Default value added".toUpperCase());
       }
     } else { //If key isn't in the example, we stop
         addToCollection = false;
         myObject = {}; // empty the object
-        console.log(key, " isn't in schema");
+        console.log(key, " isn't in schema".toUpperCase());
         return op; // stop the forEach loop
      }
   }
-  if (addToCollection === true){
-    myCollection.push(myObject);
-    console.log(myCollection);
-    return myObject
-  } else {
+  if ('name' in op){ //Challenge: property required ('name').
+    if (addToCollection === true){ //Challenge: remember is an object was valid.
+      myCollection.push(myObject); // We made it!!! :)
+      console.log("New object added to myCollection ".toUpperCase(), myCollection);
+      return myObject
+    } else { // if it wasn't valid, just return the Object passed.
+      return op
+    }
+  } // If name doesn't exist, it returns the Object passed
+    myObject = {};
+    console.log("Property 'name' is required".toUpperCase());
     return op
-  }
 }
 
 // TEST SCRIPTS:
@@ -109,5 +112,5 @@ function schematizer(schema, op){
 // CHALLENGES
 //---------------
 // have required and non-required fields.
-// remeber if an object was valid or not - maybe by storing them in
+// remember if an object was valid or not - maybe by storing them in
 // different locations, or adding a property, or anything else you can think of
