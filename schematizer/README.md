@@ -22,7 +22,7 @@ This project contains these items:
         FALLBACK: A value to fall back on if there is no 'args'
     3. OPERATION: Object
      * PROPERTIES:
-     
+
         TYPE: A string indicating the type of 'operation'.
         FALLBACK: A default value for 'operation' if it's not included.
 
