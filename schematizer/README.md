@@ -4,24 +4,24 @@ This project contains these items:
 
 1. OPERATION: Objects. As many as you like.
  * PROPERTIES:
-    NAME: a string that describes what the operation does
-    NUMARGS: the number of arguments this operation takes
+  NAME: A string that describes what the operation does.
+  NUMARGS: The number of arguments this operation takes.
  * METHODS:
-		OPERATION: a function that does the math
+  OPERATION: A function that does the math.
 
 2. SCHEME: Another object that contains:
     1. NAME: object
      * PROPERTIES:
-      TYPE: a string indicating the type of name
-      FALLBACK: a value to be used as 'name' if an operation comes in without one
-    2. NUMARGS:  object
+      TYPE: A string indicating the type of name
+      FALLBACK: A value to be used as 'name' if an operation comes in without one.
+    2. NUMARGS: Object
      * PROPERTIES:
-      TYPE: a string indicating the type of 'args'
-      FALLBACK: an value to fall back on if there is no 'args'
-    3. OPERATION: object
+      TYPE: A string indicating the type of 'args'
+      FALLBACK: A value to fall back on if there is no 'args'
+    3. OPERATION: Object
      * PROPERTIES:
-      TYPE: a string indicating the type of 'operation'
-      FALLBACK:  a default value for 'operation' if it's not included
+      TYPE: A string indicating the type of 'operation'.
+      FALLBACK: A default value for 'operation' if it's not included.
 
 Example:
 ```javascript
@@ -43,7 +43,7 @@ It will compare the object to the expectations of the schema, and return the obj
 ## CHALLENGES
 
 1. Have required and non-required fields.
-2. Remember if an object was valid or not
+2. Remember if an object was valid or not.
 
 ---
 
@@ -64,4 +64,4 @@ the schema.
 
 ## Resources
 
-[The in Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in) [The for... in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) [The if... else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) [Function return values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
+[The in Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in) | [The for... in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) | [The if... else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) | [Function return values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
