@@ -24,15 +24,15 @@ This project contains these items:
         -FALLBACK: A default value for 'operation' if it's not included.
 
 Example:
-```javascript
 
+```
 sum = {name: {type: "string", value: "I add two numbers"}, numArgs: {type: "number", value: 2}, operation: {type: "function", operation: function(a, b){a+b}}}
-
 ```
 ---
 The schematizer is a function that compares two objects: an schema and
 an object passed for the user. For example, being *sum* the schema:
-```javascript
+
+```
 schematizer(sum, {name: {type: "string", value: "sub"}, numArgs: {type: "number", value: 2}, operation: {type: "function", value: function(a, b){a - b}}})
 ```
 
@@ -40,7 +40,7 @@ It will compare the object to the expectations of the schema, and return the obj
 1. If the object passes but is incomplete, it will be filled with default values.
 2. If it fails, it is returned whole.
 
-## CHALLENGES
+### CHALLENGES
 
 1. Have required and non-required fields.
 2. Remember if an object was valid or not.
@@ -51,9 +51,11 @@ It will compare the object to the expectations of the schema, and return the obj
 
  The function is very verbose, the main messages are in UPPERCASE.
 
+ 'name' is a mandatory field. That means that it's also mandatory when creating the schema.
+
  The user can create as many Objects as they like and then call them as the first
 argument of the schematizer function. To use the one provide as an example, just
-type `schematizer(example, andYourObject)`
+type `schematizer(example, andYourObject)`.
 
  The user can access to their new Object calling `myObject` if the Object matched
 the schema.
@@ -62,6 +64,9 @@ the schema.
 
  Schematizer return the new Object, so the user can store the result of the function in their own variable.
 
-## Resources
+### Resources
 
 [The in Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in) | [The for... in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) | [The if... else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) | [Function return values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
+
+### Hints:
+While you create loops and conditions, print to the console a message inside them to understand what's going on.
