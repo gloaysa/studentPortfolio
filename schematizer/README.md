@@ -40,6 +40,13 @@ It will compare the object to the expectations of the schema, and return the obj
 1. If the object passes but is incomplete, it will be filled with default values.
 2. If it fails, it is returned whole.
 
+## CHALLENGES
+
+1. Have required and non-required fields.
+2. Remember if an object was valid or not
+
+---
+
 ## How to use it
 
  The user can create as many Objects as they like and then call them as the first
@@ -50,3 +57,5 @@ type `schematizer(example, andYourObject)`
 the schema.
 
  The user can access to their collection of previous passed Objects calling `myCollection`.
+
+ Schematizer return the new Object, so the user can store the result of the function in their own variable.
