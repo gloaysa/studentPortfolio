@@ -12,16 +12,16 @@ This project contains these items:
 2. SCHEME: Another object that contains:
     1. NAME: object
      * PROPERTIES:  
-        TYPE: A string indicating the type of name  
-        FALLBACK: A value to be used as 'name' if an operation comes in without one.
+        -TYPE: A string indicating the type of name  
+        -FALLBACK: A value to be used as 'name' if an operation comes in without one.
     2. NUMARGS: Object
      * PROPERTIES:  
-        TYPE: A string indicating the type of 'args'  
-        FALLBACK: A value to fall back on if there is no 'args'
+        -TYPE: A string indicating the type of 'args'  
+        -FALLBACK: A value to fall back on if there is no 'args'
     3. OPERATION: Object
      * PROPERTIES:  
-        TYPE: A string indicating the type of 'operation'.  
-        FALLBACK: A default value for 'operation' if it's not included.
+        -TYPE: A string indicating the type of 'operation'.  
+        -FALLBACK: A default value for 'operation' if it's not included.
 
 Example:
 ```javascript
