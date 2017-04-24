@@ -63,13 +63,15 @@ function addTo(newObj){
     //contains a string indicating operation to be used and numbers to be operated on
 function operate(op, a, b, c){
   //if success, returns an array containing success msg and result of operation
-  for (i = 0; i < operation.length; i++){
-    console.log("looooooooping!");
-    for (key in op){
-      if (key in operation[i]) {
-        if (operation.fallback(a, b, c != NaN)){
+  for (i = 0; i < operation.length; i++ in operation){
+    console.log("i is", i);
+    for (i[key] in op){
+      console.log("key is", key);
+      if ('operation' in operation[i]) {
+        console.log("fallback is", operation.fallback);
+        if (fallback(a, b, c != NaN)){
           console.log("The operation", op, "was a success!")
-          return operation.fallback(a, b, c);
+          return fallback(a, b, c);
         }else { console.log("Please, pass numbers"); return undefined
         }
       }//else, msg telling operation was a failure, return undefined
