@@ -87,7 +87,6 @@ var schemaCalc = {
       console.log("The schema has been modified");
       return this.schema;
     }
-
 };
 
 //TEST SCRIPT:
