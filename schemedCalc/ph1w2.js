@@ -91,7 +91,7 @@ var schemaCalc = {
 };
 
 //TEST SCRIPT:
-example: {
+var example = {
     name: {value: "sum", does: "Add up to 3 numbers"},
     numArgs: {value: 3, does: "Give the numbers of args that operation takes"},
     operation: {value: function(a, b, c = 0){return a + b + c}}
