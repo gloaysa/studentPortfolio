@@ -19,8 +19,8 @@ var schemaCalc = {
 
                     //**FUNCTIONS**
   //|______________________________________________________|
-  //| addTo is a function that match new objects against   |
-  //| the schema & add them to operations if they're valid |
+  //| addTo is a function that matches new objects against |
+  //| the schema & add them to operations if they're valid,|
   //| returning a success/failure msg.                     |
   //|______________________________________________________|
 
@@ -76,7 +76,7 @@ var schemaCalc = {
     console.log("Operation not found");
     return undefined;
   },
-  
+
   //|_______________________________________________|
   //| changeSchema is a function that reset the     |
   //| schema with the object passed as an argument  |
