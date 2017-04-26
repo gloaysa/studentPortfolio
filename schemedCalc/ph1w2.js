@@ -42,7 +42,7 @@ var schemaCalc = {
         }
       } else {
           myObject = {};
-          console.log("Property".toUpperCase, key, "isn't in schema".toUpperCase());
+          console.log("Property".toUpperCase(), key, "isn't in schema".toUpperCase());
           return obj;
        }
     }//if everything went ok and property 'name'&'operation' are included
