@@ -53,7 +53,7 @@ To operate the objects stored in operations[] the user can call the operate func
 
 To reset the schema the user can call the function `schemaCalc.changeSchema({new schema});`. It isn't strict at all, so **the user have to make sure that their new schema contains the 'value' key** within their objects to let the other functions work. They can add as many more key/value pairs as they like.
 
-For testing, an example object has been previously created. To use it, add it to the operations array with `schemaCalc.addTo(example);` and call it with `schemaCalc.operate("sum");``
+For testing, an example object has been previously created. To use it, add it to the operations array with `schemaCalc.addTo(example);` and call it with `schemaCalc.operate("sum");`
 
  ---
 
