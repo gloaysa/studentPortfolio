@@ -10,13 +10,11 @@ This project contains these items:
     * NAME: Object containing the name and description of the operation. It's required.  
       PROPERTIES:  - VALUE: A string indicating the name of the operation.  
 
-    * NUMARGS: Object containing the numbers of arguments that the operation takes. It's optional.
+    * NUMARGS: Object containing the numbers of arguments that the operation takes. It's optional.  
        PROPERTIES:  - VALUE: A number.  
 
     * OPERATION: Object containing the function to be operated. It's required.  
        PROPERTIES: - VALUE: A full operational function.
-
-> NOTE for the user changing the schema: the objects 'name', 'numArgs' and 'operation' accept more key/value pairs, but the 'value => default' ones are mandatory.
 
 + OPERATIONS: It's an array where the new succesfully created object is stored.
 
@@ -30,8 +28,6 @@ schema.Calc.addTo({
     operation: {value: function(a, b, c = 0){return a + b + c}}
   })
 ```
-
-> NOTE: the object passed can contain more key/value pairs inside each property than the schema (a description, for example), but a valid 'value' key is required.
 
 + OPERATE: Function that accepts 4 arguments (a string with the name of the operation to be operated a three numbers) and searches for an operation passed as argument in the operations array. If find it, executes the function with the arguments passed along and returns the result. If doesn't find it, prompt the user to add the new function and operates the numbers passed before.  
 Example:
@@ -55,7 +51,7 @@ The user can create as many operation objects as they like. They'll be stored at
 
 To operate the objects stored in operations[] the user can call the operate function, passing it the name of the operation and the number to execute. This function accepts up to 4 arguments. To use it, type `schemaCalc.operate("operation", number1, number2, number3)`. If the operation passed is not found, it will prompt to the user to add the new operation. The user will only have to add the objects without the brackets: `name: {value: "added for user"}, function: {value: function(){}}`. The new object will be operate with the numbers passed on the previous attempt.
 
-To reset the schema the user can call the function `schemaCalc.changeSchema({new schema})`. It isn't strict at all, so **the user have to make sure that their new schema contains the 'value' key** within their objects to let the other functions work.
+To reset the schema the user can call the function `schemaCalc.changeSchema({new schema})`. It isn't strict at all, so **the user have to make sure that their new schema contains the 'value' key** within their objects to let the other functions work. They can add as many more key/value pairs as they like.
 
  ---
 
