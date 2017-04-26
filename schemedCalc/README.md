@@ -47,6 +47,7 @@ schemaCalc.operate("sum", 1, 2) // return 3
 
 
 ## How to use it
+
 To add a new operation object, just type `schemaCalc.addTo({your object}`. It has to match with the schema, which is `{name: {value: "name of operation"}, numArgs: {value: 1}, operation: {value: function(){}}`.
 **Note**: 'name' and 'operation' are mandatories when adding new objects.
 The user can create as many operation objects as they like. They'll be stored at the operations array. If the user wants to check all their operations, just type `schemaCalc.operations`.
