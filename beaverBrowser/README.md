@@ -32,9 +32,8 @@ Be ready, this file is loooong.
 
 3. **model.js**: All the functionality connected to storing, accessing, modifying beavers. It will have a main object storing other objects and functions. No libraries, just vanilla javascript :)
 
-	+ beaversList: the main object, contains objects and functions.
-
-  **PROPERTIES**
+	+ beaversList: the main object, contains objects and functions.  
+	**PROPERTIES**
 
 		- beaverRecord: object. Their properties must be:
 
@@ -45,8 +44,7 @@ Be ready, this file is loooong.
 			* TRACKED: boolean, is this beaver being tracked?
 
 		- beavers: array containing beavers records.  
-
-    **METHODS**
+	**METHODS**
 
 		- trackedBeavers: array containing the names of the beavers being tracked.  
 		- toogleTracked: a function. Accesses the indicated beaver and sets its 'tracked' property to what it wasn't.
@@ -76,9 +74,8 @@ Be ready, this file is loooong.
 
 4. **view.js**: All functionality connected to making something visible on screen (DOM manipulation). Again, no libraries, plain javascript:
 
-	+ beaverViewer: the main object. All the functions are stored inside:
-
-  **METHODS**
+	+ beaverViewer: the main object. All the functions are stored inside:  
+	**METHODS**
 
 		- displayBeavers: it's the function used to display all the beavers. It creates a html 'ul' and populates it with beaver's profiles and all the buttons that entails. It doesn't take any argument. When it's called, it will display beavers info nicely.
 
@@ -104,9 +101,8 @@ Be ready, this file is loooong.
 
 5. **controller.js**: manipulates 'beaversList' and 'beaverViewer'. All the buttons call a method to this object. No libraries, vanilla Javascript.
 
-	+ handlers: main object. All the functions are stored inside:
-
-  **METHODS**
+	+ handlers: main object. All the functions are stored inside:  
+	**METHODS**
 
 		- displayBeavers: calls 'beaverViewer.displayBeavers'.
 
