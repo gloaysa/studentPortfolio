@@ -18,28 +18,36 @@ Be ready, this file is loooong.
   + Imports: refering to the .css and all the .js files.  
   + Interactions:
 
-  		- UNTRACK ALL BEAVERS: be able to untrack all beavers when funding is cut.  
-  		- UNTRACK SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.  
-  		- RETRACK A SINGLE BEAVER: maybe it wasn't dead!  
-  		- ADD A BEAVER: using some input fields to collect all the needed info.  
+  		- UNTRACK ALL BEAVERS: be able to untrack all beavers when funding is cut.
+
+  		- UNTRACK SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.
+
+  		- RETRACK A SINGLE BEAVER: maybe it wasn't dead!
+
+  		- ADD A BEAVER: using some input fields to collect all the needed info.
+
   		- SPOT A BEAVER: prompt the user for the new location and add it to the beaver list.
 
-2. **beavers.css**: A file to make the HTML looks pretty :sparkles:  
-	All the content is optional.
+2. **beavers.css**: A file to make the HTML looks pretty :sparkles: All the content is optional.
 
 3. **model.js**: All the functionality connected to storing, accessing, modifying beavers. It will have a main object storing other objects and functions. No libraries, just vanilla javascript :)
 
 	+ beaversList: the main object, contains objects and functions.
 
+  **PROPERTIES**
+
 		- beaverRecord: object. Their properties must be:
 
-			1. NAME: string, the beaver's name.  
-			2. AGE: integer, the beaver's age.  
-			3. SEX: string, indicating beaver's sex.  
-			4. LOCATION: array, containing history of recorded sightings.  
-			5. TRACKED: boolean, is this beaver being tracked?
+			* NAME: string, the beaver's name.  
+			* AGE: integer, the beaver's age.  
+			* SEX: string, indicating beaver's sex.  
+			* LOCATION: array, containing history of recorded sightings.  
+			* TRACKED: boolean, is this beaver being tracked?
 
 		- beavers: array containing beavers records.  
+
+    **METHODS**
+
 		- trackedBeavers: array containing the names of the beavers being tracked.  
 		- toogleTracked: a function. Accesses the indicated beaver and sets its 'tracked' property to what it wasn't.
 
@@ -70,6 +78,8 @@ Be ready, this file is loooong.
 
 	+ beaverViewer: the main object. All the functions are stored inside:
 
+  **METHODS**
+
 		- displayBeavers: it's the function used to display all the beavers. It creates a html 'ul' and populates it with beaver's profiles and all the buttons that entails. It doesn't take any argument. When it's called, it will display beavers info nicely.
 
 		- stringfyBeaver: reads through the properties of the beave object passed as argument and concatinates them into a string.
@@ -95,6 +105,8 @@ Be ready, this file is loooong.
 5. **controller.js**: manipulates 'beaversList' and 'beaverViewer'. All the buttons call a method to this object. No libraries, vanilla Javascript.
 
 	+ handlers: main object. All the functions are stored inside:
+
+  **METHODS**
 
 		- displayBeavers: calls 'beaverViewer.displayBeavers'.
 
@@ -125,18 +137,20 @@ Be ready, this file is loooong.
 
 ### Usage example
 
-When the user loads the page, 'beaverViewer.displayBeavers' will display the array of predefined beavers and, if any, the currently tracking beaver's names.  
-The page will also have the necessary inputs to add a new beaver (name, age, sex, location). When the 'Add new beaver' (or whatever is called) button is pressed, it will take the values of those inputs and add a new beaver to the array of beavers displayed.  
-Each beaver on the array will have a 'spotted' button. If the user clicks one, the page will ask about the location where that beaver has been spotted. After the user write and add the location, it will be added to the location history of that beaver on the array and it will be displayed along the other locations.  
-Each beaver will also have a "track beaver" button. When pressed, it will be showed in someway on the page that that particular beaver is being tracked (maybe changing font color, adding some text... Up to you).  
-When the "untrack all beavers" button is pressed, all the beavers that were being tracked won't be tracked until the "track beaver" button is pressed again.
+You see Patty at the liquor store, so you open your phone, click 'spot Patty' and enter 'liquor store' in the text field. Now her info includes the liquor store.
+
+There's a new beaver on the metro today. You hand him your phone and ask him to register himself. He enters his name, age, sex, and 'line 5' into the text blanks. Now you've got another beaver profile on the home page.
+
+Patty gets sick of you writting down what she does every day and threatens to call the police. You click 'untrack Patty' and now all you can see is her name and a big red 'X' next to it.
 
 ---
 
 ### Challenge
 
-1. Change the content of every button when the status changes. For example: the content of the 'track beaver' button could be something like "start tracking" when the beaver isn't being tracked and "stop tracking" when it's being tracked.  
-2. Show on the page nicely the 'trackedBeavers' array. The content will change when the status of the 'tracked' property of each beaver changes. For example: when the user clicks on the 'track beaver' button, it will be showed on the page.  
+1. Change the content of every button when the status changes. For example: the content of the 'track beaver' button could be something like "start tracking" when the beaver isn't being tracked and "stop tracking" when it's being tracked.
+
+2. Show on the page nicely the 'trackedBeavers' array. The content will change when the status of the 'tracked' property of each beaver changes. For example: when the user clicks on the 'track beaver' button, it will be showed on the page nicely the name of that beaver.
+
 3. (extra challengy) refactor your project to use classes instead of objects.
 
 ---
