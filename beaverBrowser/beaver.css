@@ -1,0 +1,113 @@
+html {
+  height: 100%;
+}
+body {
+  background-color: #333;
+  background: url(https://s-media-cache-ak0.pinimg.com/originals/24/7c/ca/247cca7ec48bc5b5cfb932e78bfb9d85.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.head {
+  padding: 10px 0;
+  background-color: steelBlue;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 3px 1px #333;
+
+}
+
+.head hr {
+  border: 0;
+  border-top: 4px double #333;
+  text-align: center;
+}
+
+.head img {
+  width: 100px;
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(33, 33, 33, 0.8);
+  text-shadow: 1px 2px 1px grey;
+  color: white;
+  width: 30%;
+  height: 300px;
+  overflow: auto;
+  float: left;
+  margin: 20px 5px;
+  padding: 1px;
+  display: block;
+}
+
+.container ul {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.container li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+}
+
+.container input {
+  margin: 0.3em 0 0 0;
+  border: none;
+  height: 30px;
+  background-color: #666;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+li p {
+  color: white;
+  text-shadow: none;
+  text-align: left;
+  padding: 0 2px;
+  margin: 0;
+  border-radius: 3px 3px 0 0;
+
+}
+
+.spotted {
+  background: steelBlue;
+  border: none;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 0px;
+  border-top: 2px dashed #333;
+  border-radius: 0 0 2px 2px;
+}
+
+.tracking {
+  background: steelBlue;
+  border: none;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 0 0 10px 0;
+  border-bottom: 2px dashed #333;
+  border-radius: 2px 2px 0 0;
+}
+
+.noTracking {
+  background: #ff8080;
+  color: black;
+  border: none;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 0 0 10px 0;
+  border-bottom: 2px dashed #333;
+  border-radius: 2px 2px 0 0;
+}
+
+button {
+  margin: 1em auto 0 auto;
+  display: block;
+  height: 2.5em;
+}

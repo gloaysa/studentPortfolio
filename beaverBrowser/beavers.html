@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="beaver.css" type="text/css">
+    <title>BEAVERS BROWSER</title>
+  </head>
+  <body>
+    <div class="head">
+      <img src="https://beavereyecare.com/wp-content/uploads/beaver-eye-care-icon-for-slider.png" alt="">
+      <h1>Where is my beaver?</h1>
+      <hr>
+    </div>
+    <div class="container newBeaver">
+      <h2>NEW BEAVER</h2>
+        <input type="text" placeholder="Beaver's name"id="name">
+        <input type="text" placeholder="Beaver's age" id="age">
+        <input type="text" placeholder="Male or Female?" id="sex">
+        <input type="text" placeholder="Where did you see it?" id="location">
+      <button type="button" id="addBeaver">ADD BEAVER</button>
+      <hr>
+    </div>
+
+
+
+    <div class="container">
+      <h2>SPOTTED</h2>
+      <ul class="beaverList"></ul>
+      <hr>
+    </div>
+
+    <div class="container">
+      <h2>NOW TRACKING</h2>
+      <button type="button" id="untrack">UNTRACK ALL!</button>
+      <ul class="trackedBeavers"></ul>
+      <hr>
+    </div>
+
+
+
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="view.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+  </body>
+</html>
