@@ -104,77 +104,10 @@ beaverViewer.createProfileButton = function(i) {
 
 //this is what keeps our page 'on', listening to the user
 beaverViewer.setupEventListener = function(){
-//connects onclick events to buttons according to their class
-  this.addBeaver();
-  this.trackingButton();
-  this.addLocation();
-  this.untrackAll();
-  this.profileButton();
-};
-
-//'add beaver' button
-beaverViewer.addBeaver = function(){
-  document.getElementById("addBeaver").addEventListener("click", function(){
-    //each of this are our inputs.
-    var name = document.getElementById("name");
-    var age = document.getElementById("age");
-    var sex = document.getElementById("sex");
-    var location = document.getElementById('location');
-    var image = document.getElementById('image');
-    //the value is captured and sent to handlers.addBeaver function.
-    handlers.addBeaver(name.value, age.value, sex.value, location.value, image.value);
-  });
-
-};
-
-//'tracking' button
-beaverViewer.trackingButton = function(){
-  var beaver = document.querySelectorAll("#track");
-  for (var i = 0; i < beaver.length; i++) {
-    beaver[i].addEventListener("click", function(){
-      //'this' is 'beaver[i]'', 'parentNode' is 'li' and 'id' is the number
-      //that we setup when creating the 'li' in displayBeaver
-      //using 'Element.id' is more appropiate to use here than 'getElementById'
-      index = parseInt(this.parentNode.id);
-      handlers.toggleTracked(index);
-    });
-  };
-
-};
-
-// 'add location' button
-beaverViewer.addLocation = function(){
-  var located = document.querySelectorAll(".spotted");
-  for (var i = 0; i < located.length; i++) {
-    located[i].addEventListener("click", function(){
-      place = prompt("Where have you seen this beaver?");
-      //avoid adding null if the user cancels the prompt or empty string if hits accept
-      //consoling.log the result
-      place === null || place === "" ? console.log("no location added") : (index = this.parentNode.id,
-      //same as before with paredNode.id
-      // index = this.parentNode.id;
-      handlers.spotBeaver(index, place));
-    });
-  };
-
-};
-
-//'profile' button
-beaverViewer.profileButton = function(){
-  var profile = document.querySelectorAll(".profileButton");
-  for (var i = 0; i < profile.length; i++) {
-    profile[i].addEventListener("click", function(){
-      index = this.id;
-      handlers.goToProfile(index);
-    });
-  };
-
-};
-
-//'untrack all' button
-beaverViewer.untrackAll = function(){
-  document.getElementById("untrack").addEventListener("click", function(){
-    handlers.untrackAll();
-  });
-
+  this.displayBeaver();
+  buttons.addBeaver();
+  buttons.trackingButton();
+  buttons.addLocation();
+  buttons.untrackAll();
+  buttons.profileButton();
 };
