@@ -142,3 +142,9 @@ hr {
   background: #ff8080;
 
 }
+
+a {
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+}

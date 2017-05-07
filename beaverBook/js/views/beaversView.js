@@ -69,7 +69,7 @@ beaverViewer.createImageProfile = function(i) {
 //creates a button with the spotted class and nice text
 beaverViewer.createSpottedButton = function() {
   var spotted = document.createElement("button");
-  spotted.innerHTML = "<i class=\"fa fa-compass\" aria-hidden=\"true\"></i> Places";
+  spotted.innerHTML = "<i class=\"fa fa-compass\"</i> Places";
   spotted.classList.add("spotted");
   return spotted;
 
@@ -80,10 +80,10 @@ beaverViewer.createTrackedButton = function(i) {
   var tracking = document.createElement("button");
   tracking.setAttribute("id", "track")
   if (beaversList.beavers[i].tracked){
-    tracking.innerHTML = "I <i class=\"fa fa-thumbs-up\" aria-hidden=\"true\"></i> you!";
+    tracking.innerHTML = "I <i class=\"fa fa-thumbs-up\"></i> you!";
     tracking.classList.add("tracking");
   } else {
-    tracking.innerHTML = "I <i class=\"fa fa-thumbs-down\" aria-hidden=\"true\"></i> you";
+    tracking.innerHTML = "I <i class=\"fa fa-thumbs-down\"></i> you";
     tracking.classList.remove("tracking");
     tracking.classList.add("noTracking");
   };
@@ -96,7 +96,7 @@ beaverViewer.createProfileButton = function(i) {
   id = beaversList.beavers[i].id
   profile.id = id;
   profile.classList.add("profileButton");
-  profile.innerHTML = "<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i> Profile";
+  profile.innerHTML = "<a href =\"profile.html\"><i class=\"fa fa-id-card\"></i> Profile</a>";
   return profile;
 }
 
