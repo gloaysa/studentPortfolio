@@ -1,5 +1,4 @@
 //manipulates beaverList and beaverViewer.  all buttons call a method in CONTROLLER
-
 var handlers = {};
 
 //calls 'model's addBeaver method. console logs the not success of this operation.
