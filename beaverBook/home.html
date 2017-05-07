@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style/beaver.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BEAVERBOOK</title>
+  </head>
+  <body>
+    <div class="head">
+      <div id="head">
+        <img src="http://bbrt.org/wp-content/uploads/2014/07/BB1.png" alt="beaverBook">
+        <h1>BeaverBook</h1>
+      </div>
+    </div>
+    <div class="newBeaver">
+      <h2>NEW BEAVER</h2>
+        <input type="text" placeholder="Beaver's name"id="name">
+        <input type="text" placeholder="Beaver's age" id="age">
+        <input type="text" placeholder="Male or Female?" id="sex">
+        <input type="text" placeholder="Where did you see it?" id="location">
+        <input type="text" placeholder="add an URL image" id="image">
+      <button type="button" id="addBeaver">ADD BEAVER</button>
+    </div>
+    <hr>
+
+
+
+    <div class="container">
+      <h2>BEAVER PROFILES</h2>
+      <ul class="beaverList"></ul>
+      <hr>
+      <button type="button" id="untrack"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+UNTRACK ALL!</button>
+    </div>
+
+    <!-- <div class="container">
+      <h2>NOW TRACKING</h2>
+
+      <ul class="trackedBeavers"></ul>
+      <hr>
+    </div> -->
+
+
+
+    <script type="text/javascript" src="js/models/beaverModel.js"></script>
+    <script type="text/javascript" src="js/views/beaversView.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+  </body>
+</html>
