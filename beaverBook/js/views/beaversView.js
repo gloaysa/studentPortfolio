@@ -159,6 +159,7 @@ beaverViewer.addLocation = function(){
 
 };
 
+//'profile' button
 beaverViewer.profileButton = function(){
   var profile = document.querySelectorAll(".profileButton");
   for (var i = 0; i < profile.length; i++) {
