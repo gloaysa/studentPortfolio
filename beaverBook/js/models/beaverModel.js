@@ -1,6 +1,6 @@
 //all functionality connected to storing, accessing, modifying beavers
 
- var beaversList = {};
+var beaversList = {};
 
 beaversList.beaverRecord = {
   id: "number",
