@@ -23,6 +23,14 @@ handlers.addBeaver = function(name, age, sex, location, image){
 
 };
 
+//tells 'model' to untrack the given beaver
+handlers.toggleTracked = function(index){
+  beaversList.toggleTracked(index);
+  beaverViewer.displayBeaver();
+  beaverViewer.setupEventListener();
+
+};
+
 //calls 'model's toggleTracked method with the new location and the beaver spotted.
 handlers.spotBeaver = function(index, place){
   beaversList.spotBeaver(index, place);
@@ -33,13 +41,14 @@ handlers.spotBeaver = function(index, place){
 
 };
 
-//tells 'model' to untrack the given beaver
-handlers.toggleTracked = function(index){
-  beaversList.toggleTracked(index);
-  beaverViewer.displayBeaver();
-  beaverViewer.setupEventListener();
-
+handlers.goToProfile = function(id){
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    beaversList.beavers[i].id === parseInt(id) ?
+      beaversList.beavers[i].lastSelected = true :
+      beaversList.beavers[i].lastSelected = false;
+  }
 };
+
 //calls 'untrackbeaver' for each beaver in 'model'.
 handlers.untrackAll = function(){
   beaversList.untrackAll();

@@ -9,7 +9,8 @@ beaversList.beaverRecord = {
   sex: "string",
   location: "string",
   tracked: "boolean",
-  image: "string"
+  image: "string",
+  lastSelected: "boolean"
 
 };
 
@@ -21,7 +22,8 @@ beaversList.beavers = [
       sex: "male",
       location: ["WoodStock's gardens"],
       tracked: true,
-      image: "https://s-media-cache-ak0.pinimg.com/originals/a7/63/f2/a763f2dbad57863ee0081fe7c6bfa321.png"
+      image: "https://s-media-cache-ak0.pinimg.com/originals/a7/63/f2/a763f2dbad57863ee0081fe7c6bfa321.png",
+      lastSelected: false
     },
     {
       id: 1002,
@@ -30,7 +32,8 @@ beaversList.beavers = [
       sex: "female",
       location: ["Punxsutawney park"],
       tracked: false,
-      image: "http://www.bkgm.com/articles/Fletcher/BeaverTheory/beaver.png"
+      image: "http://www.bkgm.com/articles/Fletcher/BeaverTheory/beaver.png",
+      lastSelected: false
     },
     {
       id: 1003,
@@ -39,7 +42,8 @@ beaversList.beavers = [
       sex: "male",
       location: ["Quarryville place"],
       tracked: false,
-      image: "http://www.pngmart.com/files/3/Beaver-PNG-Free-Download.png"
+      image: "http://www.pngmart.com/files/3/Beaver-PNG-Free-Download.png",
+      lastSelected: false
     }
 ];
 

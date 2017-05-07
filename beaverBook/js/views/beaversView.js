@@ -135,7 +135,7 @@ beaverViewer.trackingButton = function(){
       //'this' is 'beaver[i]'', 'parentNode' is 'li' and 'id' is the number
       //that we setup when creating the 'li' in displayBeaver
       //using 'Element.id' is more appropiate to use here than 'getElementById'
-      index = this.parentNode.id
+      index = parseInt(this.parentNode.id);
       handlers.toggleTracked(index);
     });
   };
@@ -165,7 +165,7 @@ beaverViewer.profileButton = function(){
   for (var i = 0; i < profile.length; i++) {
     profile[i].addEventListener("click", function(){
       index = this.id;
-      console.log(index);
+      handlers.goToProfile(index);
     });
   };
 
