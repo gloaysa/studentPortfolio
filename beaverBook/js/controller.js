@@ -114,10 +114,14 @@ buttons.profileButton = function(){
 //**PROFILE**
 var profileControl = {};
 
+profileControl.lastSelected = {};
+
 profileControl.goToProfile = function(id){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     beaversList.beavers[i].id === parseInt(id) ?
       beaversList.beavers[i].lastSelected = true :
       beaversList.beavers[i].lastSelected = false;
   }
+  localStorage.setItem("beaver", JSON.stringify(beaversList.beavers));
+  window.location.href = "profile.html";
 };

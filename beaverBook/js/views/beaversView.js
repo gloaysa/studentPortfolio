@@ -96,7 +96,7 @@ beaverViewer.createProfileButton = function(i) {
   id = beaversList.beavers[i].id
   profile.id = id;
   profile.classList.add("profileButton");
-  profile.innerHTML = "<a href =\"profile.html\"><i class=\"fa fa-id-card\"></i> Profile</a>";
+  profile.innerHTML = "<i class=\"fa fa-id-card\"></i> Profile";
   return profile;
 }
 
