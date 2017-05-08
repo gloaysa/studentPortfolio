@@ -37,7 +37,7 @@ body {
 
 }
 
-.container {
+.container .profile {
   text-align: center;
   text-shadow: 1px 2px 1px grey;
   color: #333;
@@ -48,7 +48,7 @@ body {
   display: block;
 }
 
-.container li {
+.container .profile li {
   text-align: left;
   float: left;
   list-style: none;
@@ -72,7 +72,7 @@ body {
   font-size: 1.2em;
 }*/
 
-li p {
+.profile li p {
   color: black;
   text-shadow: none;
   text-align: center;
@@ -82,24 +82,24 @@ li p {
 
 }
 
-.name {
+.profile .name {
   font-size: 3em;
 }
 
-.name, .sex {
+.profile .name, .profile .sex {
   text-transform: uppercase;
 }
 
-.age, .sex, .location {
+.profile .age, .profile .sex, .profile .location {
   font-size: 1.2em;
 }
 
-.name, .age, .sex, .location {
+.profile .name, .profile .age, .profile .sex, .profile .location {
   display: block;
   margin-top: 5px;
 }
 
-li img {
+.profile li img {
   margin: 5px;
   width: 30%;
   border: 1px solid steelBlue;

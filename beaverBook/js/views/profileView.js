@@ -24,10 +24,20 @@ profileViewer.displayBeaver = function(){
       numberLi.id = i;
     }
   };
+  this.displayRelations();
 
 };
 
 profileViewer.displayRelations = function(){
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    if(!beaversList.beavers[i].lastSelected){
+      var ul = document.querySelector(".relations");
+      //ul.textContent = "";
+      var uLi = document.createElement("li");
+      uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
+      ul.appendChild(uLi);
+    }
+  };
 
 };
 
