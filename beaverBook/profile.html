@@ -2,9 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style/profileStyle.css">
     <title>Profile</title>
   </head>
   <body>
+    <div id="head">
+      <img src="http://bbrt.org/wp-content/uploads/2014/07/BB1.png" alt="beaverBook">
+      <h1>BeaverBook</h1>
+    </div>
+    <div class="container">
+      <h2>Welcome back!</h2>
+      <ul class="profile"></ul>
+    </div>
 
 
 
@@ -12,5 +21,9 @@
 
     <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/models/beaverModel.js"></script>
+    <script type="text/javascript" src="js/views/profileView.js"></script>
+    <script type="text/javascript">
+      profileViewer.displayBeaver();
+    </script>
   </body>
 </html>
