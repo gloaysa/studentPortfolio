@@ -16,6 +16,7 @@ profileViewer.displayBeaver = function(){
       //add all to li.
       uLi.appendChild(this.createImageProfile(i));
       uLi.appendChild(pLi);
+      uLi.appendChild(this.createModifyButton());
       // uLi.appendChild(this.createTrackedButton(i));
       // uLi.appendChild(this.createSpottedButton());
       // uLi.appendChild(this.createProfileButton(i));
@@ -36,6 +37,10 @@ profileViewer.displayRelations = function(){
       var uLi = document.createElement("li");
       uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
       ul.appendChild(uLi);
+      uLi.appendChild(this.createRequestButton());
+      uLi.appendChild(this.createUnfriendButton());
+      uLi.appendChild(this.createMessageButton());
+
     }
   };
 
@@ -64,21 +69,62 @@ profileViewer.createImageProfile = function(i) {
 };
 
 profileViewer.createRequestButton = function(){
+  button = document.createElement("button");
+  button.classList.add("request");
+  button.textContent = "Add friend";
+  return button;
 
 };
 
 profileViewer.createUnfriendButton = function(){
+  button = document.createElement("button");
+  button.classList.add("unfriend");
+  button.textContent = "Remove friend";
+  return button;
 
 };
 
 profileViewer.createMessageButton = function(){
+  button = document.createElement("button");
+  button.classList.add("message");
+  button.textContent = "Send message";
+  return button;
 
 };
-
+//creates a button with the modifyProfile class and nice text
 profileViewer.createModifyButton = function(){
+  button = document.createElement("button");
+  button.classList.add("modifyProfile");
+  button.textContent = "Modify profile";
+  return button;
 
 };
 
 profileViewer.setupEventListener = function(){
+  for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
+    document.querySelectorAll(".request")[i].addEventListener("click", function(){
+      console.log(this);
+    })
+
+  };
+  for (var i = 0; i < document.querySelectorAll(".unfriend").length; i++) {
+    document.querySelectorAll(".unfriend")[i].addEventListener("click", function(){
+      console.log(this);
+    })
+
+  };
+
+  for (var i = 0; i < document.querySelectorAll(".message").length; i++) {
+    document.querySelectorAll(".message")[i].addEventListener("click", function(){
+      console.log(this);
+    })
+
+  };
+  for (var i = 0; i < document.querySelectorAll(".modifyProfile").length; i++) {
+    document.querySelectorAll(".modifyProfile")[i].addEventListener("click", function(){
+      console.log(this);
+    })
+
+  };
 
 };

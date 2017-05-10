@@ -47,8 +47,10 @@ beaversList.addMessage = function(id, message){
 beaversList.deleteRelation = function(id){
   for (var i = 0; i < this.relations.length; i++) {
     if(this.relations[i].id === id){
+      beaver = this.relations[i].beaver2;
       index = indexOf(this.relations[i]);
       this.relations.splice(index, 1);
+      alert("You are no longer friend of" + beaver);
     }
   };
 
