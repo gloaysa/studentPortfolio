@@ -23,21 +23,7 @@ body {
   width: 100px;
 }
 
-.newBeaver {
-  display: ;
-  margin-left: 20px;
-}
-
-.newBeaver input {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.newBeaver button {
-
-}
-
-.container .profile {
+.container .profile, h2{
   text-align: center;
   text-shadow: 1px 2px 1px grey;
   color: #333;
@@ -78,7 +64,6 @@ body {
   text-align: center;
   padding: 0 2px;
   margin: 10px;
-  overflow: scroll;
 
 }
 
@@ -110,7 +95,7 @@ hr {
   clear: both;
 }
 
-#untrack, .spotted, .tracking, .noTracking, .profileButton {
+.modifyProfile {
   font-size: 16px;
   display: inline;
   border: none;
@@ -123,7 +108,7 @@ hr {
 
 }
 
-#untrack:active, .spotted:active, .tracking:active, .noTracking:active, .profileButton:active {
+.modifyProfile:active {
   box-shadow: 0px 0px 0px #000;
 }
 
@@ -132,7 +117,7 @@ hr {
   background: #ff4040;
 }
 
-.spotted, .tracking, .profileButton {
+.modifyProfile {
   background: steelBlue;
 }
 
