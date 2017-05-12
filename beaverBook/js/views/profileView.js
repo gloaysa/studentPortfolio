@@ -5,7 +5,7 @@ profileViewer.displayBeaver = function(){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if (beaversList.beavers[i].lastSelected){
       document.querySelector(".container h2").innerHTML = "Welcome back " + beaversList.beavers[i].name + "!";
-      var ul = document.querySelector(".profile");
+      var ul = document.querySelector("#profile");
       //we need to empty the list and create it again every time.
       ul.textContent = "";
       var pLi = document.createElement("p");
@@ -21,7 +21,6 @@ profileViewer.displayBeaver = function(){
       // uLi.appendChild(this.createSpottedButton());
       // uLi.appendChild(this.createProfileButton(i));
       var numberLi = ul.appendChild(uLi);
-      //and we add an id to that 'li' so we can find it later.
       numberLi.id = i;
     }
   };
@@ -40,6 +39,8 @@ profileViewer.displayRelations = function(){
       uLi.appendChild(this.createRequestButton());
       uLi.appendChild(this.createUnfriendButton());
       uLi.appendChild(this.createMessageButton());
+      var numberLi = ul.appendChild(uLi);
+      numberLi.id = i;
 
     }
   };
@@ -103,7 +104,7 @@ profileViewer.createModifyButton = function(){
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
-      console.log(this);
+      buttons.request(this.parentNode.id);
     })
 
   };

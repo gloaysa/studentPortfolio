@@ -98,6 +98,13 @@ buttons.untrackAll = function(){
 
 };
 
+buttons.request = function(index){
+  console.log(beaversList.beavers[index]);
+  beaver1 = beaversList.beavers[0];
+  beaver2 = beaversList.beavers[index];
+  beaversList.addRelation(beaver1, beaver2);
+}
+
 //'profile' button
 buttons.profileButton = function(){
   var profile = document.querySelectorAll(".profileButton");

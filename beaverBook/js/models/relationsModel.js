@@ -1,13 +1,13 @@
 //all functionality connected to storing, accessing, modifying beavers
-var = relationshipRecord = {
-  id: "number";
-  beaver1: //id beaver that send request
-  beaver2: //id beaver requested
-  messages: []; //data structure storing message history
-  status: //indicates pending or responded
+var relationshipRecord = {
+  id: 0,
+  beaver1: 0,//id beaver that send request
+  beaver2: 0,//id beaver requested
+  messages: [], //data structure storing message history
+  status: false,//indicates pending or responded
 };
 
-beaversList.relations = []; //array containing relationshipRecord objects
+beaversList.relations = [relationshipRecord]; //array containing relationshipRecord objects
 
 //**FUNCTIONS**
 
@@ -16,8 +16,8 @@ beaversList.changeStatus = function(id){
   for (var i = 0; i < this.relations.length; i++) {
     if(this.relations[i].id === id){
       var relation = this.relations[i];
-      relation.status === "pending" ? relation.status = "confirmed" :
-      relation.status = "pending";
+      relation.status ? relation.status = false :
+      relation.status = true;
     }
   };
 };
@@ -25,12 +25,13 @@ beaversList.changeStatus = function(id){
 //uses the arguments to create a new relationship object
 //which is saved into 'relations' array.
 beaversList.addRelation = function(beaver1, beaver2){
-  var relation = new relationshipRecord;
+  var relation = {};
   var id = this.relations[this.relations.length - 1].id + 1;
   relation.id = id;
-  relation.beaver1: beaver1;
-  relation.beaver2: beaver2;
-  relation.status = "pending";
+  relation.beaver1 = beaver1;
+  relation.beaver2 = beaver2;
+  relation.status = false;
+  this.relations.push(relation);
 
 };
 //adds the message to the message history and allerts of success or failure.
