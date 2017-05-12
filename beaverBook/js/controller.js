@@ -128,3 +128,9 @@ profileControl.goToProfile = function(id){
   localStorage.setItem("beaver", JSON.stringify(beaversList.beavers));
   window.location.href = "profile.html";
 };
+
+profileControl.isItFriend = function(i){
+  if (beaversList.relations[i] !== undefined){
+    beaversList.relations[i].status ? return true : return false;
+  }
+};

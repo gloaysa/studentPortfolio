@@ -34,6 +34,7 @@ profileViewer.displayRelations = function(){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if(!beaversList.beavers[i].lastSelected){
       var uLi = document.createElement("li");
+      profileControl.isItFriend(i) ? uLi.classList.add("friend") : uLi.classList.remove("friend");
       uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
       ul.appendChild(uLi);
       uLi.appendChild(this.createRequestButton());
