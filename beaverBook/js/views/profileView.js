@@ -5,7 +5,7 @@ profileViewer.displayBeaver = function(){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if (beaversList.beavers[i].lastSelected){
       document.querySelector(".container h2").innerHTML = "Welcome back " + beaversList.beavers[i].name + "!";
-      var ul = document.querySelector("#profile");
+      var ul = document.querySelector(".profile");
       //we need to empty the list and create it again every time.
       ul.textContent = "";
       var pLi = document.createElement("p");
@@ -104,7 +104,9 @@ profileViewer.createModifyButton = function(){
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
-      buttons.request(this.parentNode.id);
+      beaver1 = document.getElementsByTagName("li")[0].id;
+      beaver2 = this.parentNode.id;
+      buttons.request(beaver1, beaver2);
     })
 
   };

@@ -98,10 +98,8 @@ buttons.untrackAll = function(){
 
 };
 
-buttons.request = function(index){
-  console.log(beaversList.beavers[index]);
-  beaver1 = beaversList.beavers[0];
-  beaver2 = beaversList.beavers[index];
+buttons.request = function(beaver1, beaver2){
+  console.log(beaver1, beaver2);
   beaversList.addRelation(beaver1, beaver2);
 }
 
