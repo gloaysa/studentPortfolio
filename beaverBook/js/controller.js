@@ -99,8 +99,8 @@ buttons.untrackAll = function(){
 };
 
 buttons.request = function(beaver1, beaver2){
-  console.log(beaver1, beaver2);
   beaversList.addRelation(beaver1, beaver2);
+  profileViewer.displayRelations();
 }
 
 //'profile' button

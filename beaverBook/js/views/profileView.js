@@ -29,10 +29,10 @@ profileViewer.displayBeaver = function(){
 };
 
 profileViewer.displayRelations = function(){
+  var ul = document.querySelector(".relations");
+  ul.textContent = "";
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if(!beaversList.beavers[i].lastSelected){
-      var ul = document.querySelector(".relations");
-      //ul.textContent = "";
       var uLi = document.createElement("li");
       uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
       ul.appendChild(uLi);
@@ -44,7 +44,7 @@ profileViewer.displayRelations = function(){
 
     }
   };
-
+  this.setupEventListener();
 };
 
 profileViewer.stringifyBeaver = function(beaver) {
