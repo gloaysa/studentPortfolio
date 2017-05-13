@@ -75,7 +75,7 @@ beaversList.addBeaver = function(beaverName, beaverAge, beaverSex, beaverLocatio
     sex: beaverSex,
     location: [beaverLocation],
     tracked: true,
-    image: beaverImage
+    image: beaverImage,
     lastSelected: false,
     relations: [],
     messages: []
