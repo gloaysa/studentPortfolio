@@ -132,6 +132,12 @@ profileControl.goToProfile = function(id){
   window.location.href = "profile.html";
 };
 
+profileControl.goToHome = function(){
+  localStorage.setItem("beaversList", JSON.stringify(beaversList.beavers));
+  localStorage.setItem("beaversRelation", beaversList.relations);
+  window.location.href = "home.html";
+}
+
 //check if the given relation id have true or false status.
 profileControl.isItFriend = function(i){
   if (beaversList.relations[i] !== undefined){
