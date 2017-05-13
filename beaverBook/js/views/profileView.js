@@ -105,9 +105,10 @@ profileViewer.createMessageButton = function(){
 
 };
 //create an accept request button with requester name.
-profileViewer.createAcceptRequestButton = function(requester){
+profileViewer.createAcceptRequestButton = function(requester, id){
   button = document.createElement("button");
   button.classList.add("acceptRequest");
+  button.setAttribute("id", id);
   button.textContent = "Accept friend request from " + requester;
   return button;
 
@@ -131,6 +132,13 @@ profileViewer.setupEventListener = function(){
 
   };
 
+  for (var i = 0; i < document.querySelectorAll(".acceptRequest").length; i++) {
+    document.querySelectorAll(".acceptRequest")[i].addEventListener("click", function(){
+      profileControl.acceptRequest(parseInt(this.id));
+    })
+
+  };
+
   for (var i = 0; i < document.querySelectorAll(".unfriend").length; i++) {
     document.querySelectorAll(".unfriend")[i].addEventListener("click", function(){
       console.log(this);
@@ -150,5 +158,6 @@ profileViewer.setupEventListener = function(){
     })
 
   };
+
 
 };

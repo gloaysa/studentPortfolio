@@ -151,7 +151,6 @@ profileControl.requesting = function(requestedId, relation){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     beaversList.beavers[i].id === requestedId ? beaversList.beavers[i].relations.push(relation) : "";
   };
-  profileViewer.displayBeaver();
 };
 
 //check if beaver has friend request.
@@ -160,12 +159,13 @@ profileControl.hasRequest = function(beaver){
   for (var i = 0; i < beaver.relations.length; i++) {
     if (beaver.relations[i].status === false){
       requester = beaver.relations[i].beaver1
+      relationId = beaver.relations[i].id
       for (var o = 0; o < beaversList.beavers.length; o++) {
         if (beaversList.beavers[o].id === requester){
           requester = beaversList.beavers[o].name;
         }
       }
-      acceptRequestButton.push(profileViewer.createAcceptRequestButton(requester));
+      acceptRequestButton.push(profileViewer.createAcceptRequestButton(requester, relationId));
 
     }
   }
@@ -174,4 +174,15 @@ profileControl.hasRequest = function(beaver){
    } else {
      return false;
    };
+};
+
+//accept friend request and adds beaver to friendlist.
+profileControl.acceptRequest = function(id) {
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if (beaversList.relations[i].id === id){
+      beaversList.relations[i].status = true;
+    }
+  };
+  profileViewer.displayBeaver();
+
 };
