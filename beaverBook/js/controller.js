@@ -129,12 +129,13 @@ profileControl.goToProfile = function(id){
       beaversList.beavers[i].lastSelected = false;
   }
   localStorage.setItem("beaver", JSON.stringify(beaversList.beavers));
+  //localStorage.setItem("beaversRelation", JSON.stringify(beaversList.relations));
   window.location.href = "profile.html";
 };
 
 profileControl.goToHome = function(){
   localStorage.setItem("beaversList", JSON.stringify(beaversList.beavers));
-  localStorage.setItem("beaversRelation", beaversList.relations);
+  localStorage.setItem("beaversRelation", JSON.stringify(beaversList.relations));
   window.location.href = "home.html";
 }
 

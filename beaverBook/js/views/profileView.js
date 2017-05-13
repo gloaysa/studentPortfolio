@@ -1,7 +1,11 @@
 var profileViewer = {};
+if (localStorage.hasOwnProperty("beaversRelation")){
+  beaversList.relations = JSON.parse(localStorage.getItem("beaversRelation"))
+};
 
 profileViewer.displayBeaver = function(){
   beaversList.beavers = JSON.parse(localStorage.getItem("beaver"));
+  //beaversList.beavers = JSON.parse(localStorage.getItem("beaversRelation"));
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if (beaversList.beavers[i].lastSelected){
       theBeaver = beaversList.beavers[i];

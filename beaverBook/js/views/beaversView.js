@@ -2,6 +2,15 @@
 //It calls and redirect functions from model.js and controller.js
 var beaverViewer = {}
 
+if (localStorage.hasOwnProperty("beaversList")){
+  beaversList.beavers = JSON.parse(localStorage.getItem("beaversList"))
+};
+
+if (localStorage.hasOwnProperty("beaversRelation")){
+  beaversList.relations = JSON.parse(localStorage.getItem("beaversRelation"))
+};
+
+
 //creates a UL and populates it with beaver profiles and all the buttons that entails.
 beaverViewer.displayBeaver = function() {
   //this function is called every time we add/edit/remove something, to refresh the content.
@@ -105,9 +114,9 @@ beaverViewer.createProfileButton = function(i) {
 //this is what keeps our page 'on', listening to the user
 beaverViewer.setupEventListener = function(){
   this.displayBeaver();
-  buttons.addBeaver();
-  buttons.trackingButton();
-  buttons.addLocation();
-  buttons.untrackAll();
-  buttons.profileButton();
+  buttonsControl.addBeaver();
+  buttonsControl.trackingButton();
+  buttonsControl.addLocation();
+  buttonsControl.untrackAll();
+  buttonsControl.profileButton();
 };
