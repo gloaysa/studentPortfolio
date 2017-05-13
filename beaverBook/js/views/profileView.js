@@ -106,8 +106,8 @@ profileViewer.createModifyButton = function(){
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
-      beaver1 = document.getElementsByTagName("li")[0].id;
-      beaver2 = this.parentNode.id;
+      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      beaver2 = parseInt(this.parentNode.id);
       buttons.request(beaver1, beaver2);
     })
 

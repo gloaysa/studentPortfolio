@@ -98,7 +98,9 @@ buttons.untrackAll = function(){
 
 };
 
-buttons.request = function(beaver1, beaver2){
+buttons.request = function(requester, requested){
+  beaver1 = beaversList.beavers[requester].id;
+  beaver2 = beaversList.beavers[requested].id;
   beaversList.addRelation(beaver1, beaver2);
   profileViewer.displayRelations();
 }
@@ -119,6 +121,7 @@ buttons.profileButton = function(){
 //**PROFILE**
 var profileControl = {};
 
+//go from home.html to profile.html storing array of beavers.
 profileControl.goToProfile = function(id){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     beaversList.beavers[i].id === parseInt(id) ?
@@ -129,9 +132,20 @@ profileControl.goToProfile = function(id){
   window.location.href = "profile.html";
 };
 
+//check if the given relation id have true or false status.
 profileControl.isItFriend = function(i){
   console.log("como llega i a la funcion", i);
   if (beaversList.relations[i] !== undefined){
     return beaversList.relations[i].status;
+  }
+};
+
+//check if beaver has friend request.
+profileControl.haveRequest = function(){
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if (beaversList.relations[i].status === false){
+      id = beaversList.relations[i].beaver2;
+
+    }
   }
 };
