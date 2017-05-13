@@ -140,10 +140,12 @@ profileControl.goToHome = function(){
 }
 
 //check if the given relation id have true or false status.
-profileControl.isItFriend = function(i){
-  if (beaversList.relations[i] !== undefined){
-    return beaversList.relations[i].status;
-  }
+profileControl.isItFriend = function(id){
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if ((beaversList.relations[i].beaver1 === id || beaversList.relations[i].beaver2 === id) && beaversList.relations[i].status === true){
+      return true;
+    }
+  };
 };
 
 //adds given relation to the given beavers relations[].
@@ -154,21 +156,21 @@ profileControl.requesting = function(requestedId, relation){
 };
 
 //check if beaver has friend request.
-profileControl.hasRequest = function(beaver){
+profileControl.hasRequest = function(requested){
   acceptRequestButton = [];
-  for (var i = 0; i < beaver.relations.length; i++) {
-    if (beaver.relations[i].status === false){
-      requester = beaver.relations[i].beaver1
-      relationId = beaver.relations[i].id
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if (beaversList.relations[i].beaver2 === requested.id && beaversList.relations[i].status === false){
+      requester = beaversList.relations[i].beaver1
+      relationId = beaversList.relations[i].id
       for (var o = 0; o < beaversList.beavers.length; o++) {
         if (beaversList.beavers[o].id === requester){
           requester = beaversList.beavers[o].name;
         }
-      }
+      };
       acceptRequestButton.push(profileViewer.createAcceptRequestButton(requester, relationId));
 
-    }
-  }
+    };
+  };
    if (acceptRequestButton[0] !== undefined) {
      return acceptRequestButton;
    } else {
@@ -185,4 +187,25 @@ profileControl.acceptRequest = function(id) {
   };
   profileViewer.displayBeaver();
 
+};
+
+//check if beavers are friends. Returns array of beaver objects.
+profileControl.areFriends = function(profileBeaver){
+  friendsTemp = [];
+  friends = [];
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if (beaversList.relations[i].beaver1 === profileBeaver && beaversList.relations[i].status === true){
+         friendsTemp.push(beaversList.relations[i].beaver2);
+      } else if ((beaversList.relations[i].beaver2 === profileBeaver && beaversList.relations[i].status === true)) {
+          friendsTemp.push(beaversList.relations[i].beaver1)
+      };
+  };
+  for (var i = 0; i < friendsTemp.length; i++) {
+    for (var o = 0; o < beaversList.beavers.length; o++) {
+      if (beaversList.beavers[o].id === friendsTemp[i]){
+        friends.push(beaversList.beavers[o]);
+      }
+    }
+  }
+  return friends;
 };
