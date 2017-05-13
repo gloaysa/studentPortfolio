@@ -130,7 +130,8 @@ profileControl.goToProfile = function(id){
 };
 
 profileControl.isItFriend = function(i){
+  console.log("como llega i a la funcion", i);
   if (beaversList.relations[i] !== undefined){
-    beaversList.relations[i].status ? return true : return false;
+    return beaversList.relations[i].status;
   }
 };
