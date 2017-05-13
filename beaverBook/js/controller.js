@@ -43,10 +43,10 @@ handlers.untrackAll = function(){
 
 //**BUTTONS**
 
-var buttons = {};
+var buttonsControl = {};
 
 //'add beaver' button
-buttons.addBeaver = function(){
+buttonsControl.addBeaver = function(){
   document.getElementById("addBeaver").addEventListener("click", function(){
     //each of this are our inputs.
     var name = document.getElementById("name");
@@ -61,7 +61,7 @@ buttons.addBeaver = function(){
 };
 
 //'tracking' button
-buttons.trackingButton = function(){
+buttonsControl.trackingButton = function(){
   var beaver = document.querySelectorAll("#track");
   for (var i = 0; i < beaver.length; i++) {
     beaver[i].addEventListener("click", function(){
@@ -76,7 +76,7 @@ buttons.trackingButton = function(){
 };
 
 // 'add location' button
-buttons.addLocation = function(){
+buttonsControl.addLocation = function(){
   var located = document.querySelectorAll(".spotted");
   for (var i = 0; i < located.length; i++) {
     located[i].addEventListener("click", function(){
@@ -91,22 +91,22 @@ buttons.addLocation = function(){
 };
 
 //'untrack all' button
-buttons.untrackAll = function(){
+buttonsControl.untrackAll = function(){
   document.getElementById("untrack").addEventListener("click", function(){
     handlers.untrackAll();
   });
 
 };
 
-buttons.request = function(requester, requested){
+buttonsControl.request = function(requester, requested){
   beaver1 = beaversList.beavers[requester].id;
   beaver2 = beaversList.beavers[requested].id;
   beaversList.addRelation(beaver1, beaver2);
   profileViewer.displayRelations();
-}
+};
 
 //'profile' button
-buttons.profileButton = function(){
+buttonsControl.profileButton = function(){
   var profile = document.querySelectorAll(".profileButton");
   for (var i = 0; i < profile.length; i++) {
     profile[i].addEventListener("click", function(){
@@ -134,18 +134,37 @@ profileControl.goToProfile = function(id){
 
 //check if the given relation id have true or false status.
 profileControl.isItFriend = function(i){
-  console.log("como llega i a la funcion", i);
   if (beaversList.relations[i] !== undefined){
     return beaversList.relations[i].status;
   }
 };
 
+//adds given relation to the given beavers relations[].
+profileControl.requesting = function(requestedId, relation){
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    beaversList.beavers[i].id === requestedId ? beaversList.beavers[i].relations.push(relation) : "";
+  };
+  profileViewer.displayBeaver();
+};
+
 //check if beaver has friend request.
-profileControl.haveRequest = function(){
-  for (var i = 0; i < beaversList.relations.length; i++) {
-    if (beaversList.relations[i].status === false){
-      id = beaversList.relations[i].beaver2;
+profileControl.hasRequest = function(beaver){
+  acceptRequestButton = [];
+  for (var i = 0; i < beaver.relations.length; i++) {
+    if (beaver.relations[i].status === false){
+      requester = beaver.relations[i].beaver1
+      for (var o = 0; o < beaversList.beavers.length; o++) {
+        if (beaversList.beavers[o].id === requester){
+          requester = beaversList.beavers[o].name;
+        }
+      }
+      acceptRequestButton.push(profileViewer.createAcceptRequestButton(requester));
 
     }
   }
+   if (acceptRequestButton[0] !== undefined) {
+     return acceptRequestButton;
+   } else {
+     return false;
+   };
 };

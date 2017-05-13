@@ -4,22 +4,28 @@ profileViewer.displayBeaver = function(){
   beaversList.beavers = JSON.parse(localStorage.getItem("beaver"));
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if (beaversList.beavers[i].lastSelected){
-      document.querySelector(".container h2").innerHTML = "Welcome back " + beaversList.beavers[i].name + "!";
+      theBeaver = beaversList.beavers[i];
+      document.querySelector(".container h2").innerHTML = "Welcome back " + theBeaver.name + "!";
       var ul = document.querySelector(".profile");
       //we need to empty the list and create it again every time.
       ul.textContent = "";
       var pLi = document.createElement("p");
       //we use our method to convert from object to string, and assign content of p
-      pLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);;
+      pLi.innerHTML = this.stringifyBeaver(theBeaver);;
       //create the 'li' where everything is going to be
       var uLi = document.createElement("li");
       //add all to li.
       uLi.appendChild(this.createImageProfile(i));
       uLi.appendChild(pLi);
       uLi.appendChild(this.createModifyButton());
-      // uLi.appendChild(this.createTrackedButton(i));
-      // uLi.appendChild(this.createSpottedButton());
-      // uLi.appendChild(this.createProfileButton(i));
+
+      if (buttons = profileControl.hasRequest(theBeaver)) {
+        //uLi.appendChild.hasRequest(beaversList.beavers[i]);
+        for (var i = 0; i < buttons.length; i++) {
+          uLi.appendChild(buttons[i]);
+        }
+      };
+
       var numberLi = ul.appendChild(uLi);
       numberLi.id = i;
     }
@@ -94,6 +100,14 @@ profileViewer.createMessageButton = function(){
   return button;
 
 };
+//create an accept request button with requester name.
+profileViewer.createAcceptRequestButton = function(requester){
+  button = document.createElement("button");
+  button.classList.add("acceptRequest");
+  button.textContent = "Accept friend request from " + requester;
+  return button;
+
+}
 //creates a button with the modifyProfile class and nice text
 profileViewer.createModifyButton = function(){
   button = document.createElement("button");
@@ -108,14 +122,15 @@ profileViewer.setupEventListener = function(){
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
       beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
       beaver2 = parseInt(this.parentNode.id);
-      buttons.request(beaver1, beaver2);
-    })
+      buttonsControl.request(beaver1, beaver2);
+    });
 
   };
+
   for (var i = 0; i < document.querySelectorAll(".unfriend").length; i++) {
     document.querySelectorAll(".unfriend")[i].addEventListener("click", function(){
       console.log(this);
-    })
+    });
 
   };
 
