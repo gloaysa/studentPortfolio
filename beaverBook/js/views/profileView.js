@@ -42,14 +42,18 @@ profileViewer.displayRelations = function(){
   var ul = document.querySelector(".relations");
   ul.textContent = "";
   for (var i = 0; i < beaversList.beavers.length; i++) {
-    var isItFriend = profileControl.isItFriend(i);
     if(!beaversList.beavers[i].lastSelected){
+      var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
       var uLi = document.createElement("li");
       uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
-      isItFriend ? uLi.classList.add("friend") : uLi.classList.remove("friend");
-      ul.appendChild(uLi);
-      uLi.appendChild(this.createRequestButton());
-      uLi.appendChild(this.createUnfriendButton());
+      if (isItFriend) {
+        uLi.classList.add("friend");
+        uLi.appendChild(this.createUnfriendButton());
+      } else {
+        uLi.classList.remove("friend");
+        uLi.appendChild(this.createRequestButton());
+      };
+            
       uLi.appendChild(this.createMessageButton());
       var numberLi = ul.appendChild(uLi);
       numberLi.id = i;
