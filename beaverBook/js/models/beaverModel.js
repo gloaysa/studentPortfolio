@@ -23,7 +23,9 @@ beaversList.beavers = [
       location: ["WoodStock's gardens"],
       tracked: true,
       image: "https://s-media-cache-ak0.pinimg.com/originals/a7/63/f2/a763f2dbad57863ee0081fe7c6bfa321.png",
-      lastSelected: false
+      lastSelected: false,
+      relations: [],
+      messages: []
     },
     {
       id: 1002,
@@ -33,7 +35,9 @@ beaversList.beavers = [
       location: ["Punxsutawney park"],
       tracked: false,
       image: "http://www.bkgm.com/articles/Fletcher/BeaverTheory/beaver.png",
-      lastSelected: false
+      lastSelected: false,
+      relations: [],
+      messages: []
     },
     {
       id: 1003,
@@ -43,7 +47,9 @@ beaversList.beavers = [
       location: ["Quarryville place"],
       tracked: false,
       image: "http://www.pngmart.com/files/3/Beaver-PNG-Free-Download.png",
-      lastSelected: false
+      lastSelected: false,
+      relations: [],
+      messages: []
     }
 ];
 
@@ -70,6 +76,9 @@ beaversList.addBeaver = function(beaverName, beaverAge, beaverSex, beaverLocatio
     location: [beaverLocation],
     tracked: true,
     image: beaverImage
+    lastSelected: false,
+    relations: [],
+    messages: []
   };
   //create new ID
   for (var i = 0; i < this.beavers.length; i++) {
