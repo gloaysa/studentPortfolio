@@ -14,6 +14,7 @@
       <button type="button" id="goHome" onclick="profileControl.goToHome()">Go back!</button>
       <h2>Welcome back!</h2>
       <ul class="profile"></ul>
+      <ul class="messages"></ul>
     </div>
     <div class="container">
       <h2>myFriends</h2>
@@ -29,6 +30,7 @@
     <script type="text/javascript" src="js/models/relationsModel.js"></script>
     <script type="text/javascript" src="js/views/profileView.js"></script>
     <script type="text/javascript">
+      profileViewer.loadContent();
       profileViewer.displayBeaver();
     </script>
   </body>

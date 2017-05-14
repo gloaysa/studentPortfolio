@@ -1,10 +1,13 @@
 var profileViewer = {};
-if (localStorage.hasOwnProperty("beaversRelation")){
-  beaversList.relations = JSON.parse(localStorage.getItem("beaversRelation"))
+
+profileViewer.loadContent = function(){
+  if (localStorage.hasOwnProperty("beaversRelation")){
+    beaversList.relations = JSON.parse(localStorage.getItem("beaversRelation"))
+  };
+  beaversList.beavers = JSON.parse(localStorage.getItem("beaver"));
 };
 
 profileViewer.displayBeaver = function(){
-  beaversList.beavers = JSON.parse(localStorage.getItem("beaver"));
   //beaversList.beavers = JSON.parse(localStorage.getItem("beaversRelation"));
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if (beaversList.beavers[i].lastSelected){
@@ -34,8 +37,26 @@ profileViewer.displayBeaver = function(){
       numberLi.id = i;
     }
   };
+  this.displayMessages(theBeaver);
   this.displayRelations();
 
+};
+
+profileViewer.displayMessages = function(beaver){
+  var ul = document.querySelector(".messages");
+  ul.textContent = "";
+  for (var i = 0; i < beaver.messages.length; i++) {
+    console.log(beaver.messages[i]);
+    var uLi = document.createElement("li");
+    uLi.classList.add("messages");
+    uLi.innerHTML = "Your messages with " + beaver.messages[i].from;
+    beaver2 = beaver.messages[i].from;
+    text = profileControl.displayMessage(parseInt(beaver.id), beaver2);
+    for (var o = 0; o < text.length; o++) {
+      uLi.appendChild(this.createMessage(text[o]));
+      ul.appendChild(uLi);
+    };
+  };
 };
 
 profileViewer.displayRelations = function(){
@@ -126,10 +147,17 @@ profileViewer.createModifyButton = function(){
 
 };
 
+profileViewer.createMessage = function(text){
+  message = document.createElement("p");
+  message.classList.add("text");
+  message.innerHTML = text;
+  return message;
+}
+
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
-      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
       beaver2 = parseInt(this.parentNode.id);
       buttonsControl.request(beaver1, beaver2);
     });
@@ -145,7 +173,7 @@ profileViewer.setupEventListener = function(){
 
   for (var i = 0; i < document.querySelectorAll(".unfriend").length; i++) {
     document.querySelectorAll(".unfriend")[i].addEventListener("click", function(){
-      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
       beaver2 = parseInt(this.parentNode.id);
       buttonsControl.deleteRelation(beaver1, beaver2);
     });
@@ -154,7 +182,7 @@ profileViewer.setupEventListener = function(){
 
   for (var i = 0; i < document.querySelectorAll(".message").length; i++) {
     document.querySelectorAll(".message")[i].addEventListener("click", function(){
-      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
       recipient = this.parentNode;
       message = prompt("Say something to " + recipient.children[0].textContent);
       buttonsControl.addMessage(beaver1, parseInt(recipient.id), message);

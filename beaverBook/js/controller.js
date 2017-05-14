@@ -134,25 +134,40 @@ buttonsControl.deleteRelation = function(beaver1, beaver2){
 };
 
 buttonsControl.addMessage = function(sender, recipient, message){
-  id1 = beaversList.beavers[sender].id
-  id2 = beaversList.beavers[recipient].id
-  if (beaversList.beavers[recipient].messages.length > 0){
+  id1 = beaversList.beavers[sender];
+  id2 = beaversList.beavers[recipient];
+  if (profileControl.hasMessage(id1.id, id2)){
+    //sender.
+    for (var i = 0; i < beaversList.beavers[sender].messages.length; i++) {
+      if (beaversList.beavers[sender].messages[i].from === id2.id || beaversList.beavers[sender].messages[i].from === id1.id){
+        beaversList.beavers[sender].messages[i].text.push("<strong>Me: </strong>" + message);
+      }
+    };//recipient.
     for (var i = 0; i < beaversList.beavers[recipient].messages.length; i++) {
-      if (beaversList.beavers[recipient].messages[i].from === id1){
-        beaversList.beavers[sender].messages[i].text.push("Send by me: " + message);
-        beaversList.beavers[recipient].messages[i].text.push("Send by " + name + ": " + message);
-      };
+      if (beaversList.beavers[recipient].messages[i].from === id2.id || beaversList.beavers[recipient].messages[i].from === id1.id){
+        //beaversList.beavers[sender].messages[i].text.push("<strong>Me: </strong>" + message);
+        beaversList.beavers[recipient].messages[i].text.push("<strong>" + id1.name + ":</strong> " + message);
+      }
     };
   } else {
-      beaversList.beavers[sender].messages.push({from: id2, text: ["Send by me: " + message]});
-      beaversList.beavers[recipient].messages.push({from: id1, text: ["Send by " + name + ": " + message]});
+      beaversList.beavers[sender].messages.push({from: id2.id, text: ["<strong>Me: </strong>" + message]});
+      beaversList.beavers[recipient].messages.push({from: id1.id, text: ["<strong>" + id1.name + ":</strong> " + message]});
   };
-
+  profileViewer.displayBeaver();
 };
 
 
 //**PROFILE**
 var profileControl = {};
+
+//Beaver's profile.
+profileControl.mainBeaver = function(){
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    if (beaversList.beavers[i].lastSelected){
+      return beaversList.beavers[i];
+    }
+  };
+};
 
 //go from home.html to profile.html storing array of beavers.
 profileControl.goToProfile = function(id){
@@ -162,7 +177,6 @@ profileControl.goToProfile = function(id){
       beaversList.beavers[i].lastSelected = false;
   }
   localStorage.setItem("beaver", JSON.stringify(beaversList.beavers));
-  //localStorage.setItem("beaversRelation", JSON.stringify(beaversList.relations));
   window.location.href = "profile.html";
 };
 
@@ -237,21 +251,23 @@ profileControl.areFriends = function(profileBeaver){
 };
 
 //checks if the beaver has messages.
-profileControl.hasMessage = function(id){
-  if (beaversList.beavers[id].messages.length > 0) {
-    return true;
-  } else {
-    return false
-  }
+profileControl.hasMessage = function(id2, beaver){
+  for (var i = 0; i < beaver.messages.length; i++) {
+    if (beaver.messages[i].from === id2){
+      return true;
+    }
+  };
 };
 
 //return text in messages beetwen two given beavers.
 profileControl.displayMessage = function(from, to){
-  beaver1 = beaversList.beavers[from];
-  beaver2 = beaversList.beavers[to];
-  for (var i = 0; i < beaver1.messages.length; i++) {
-    if (beaver1.messages[i].from === beaver2.id){
-      return beaver1.messages[i].text;
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    if (beaversList.beavers[i].id === from){
+      for (var o = 0; o < beaversList.beavers[i].messages.length; o++) {
+        if (beaversList.beavers[i].messages[o].from === to){
+          return beaversList.beavers[i].messages[o].text;
+        }
+      };
     }
   };
 };
