@@ -154,7 +154,10 @@ profileViewer.setupEventListener = function(){
 
   for (var i = 0; i < document.querySelectorAll(".message").length; i++) {
     document.querySelectorAll(".message")[i].addEventListener("click", function(){
-      console.log(this);
+      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      recipient = this.parentNode;
+      message = prompt("Say something to " + recipient.children[0].textContent);
+      buttonsControl.addMessage(beaver1, parseInt(recipient.id), message);
     })
 
   };
