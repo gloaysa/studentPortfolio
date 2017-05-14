@@ -49,14 +49,24 @@ profileViewer.displayMessages = function(beaver){
     console.log(beaver.messages[i]);
     var uLi = document.createElement("li");
     uLi.classList.add("messages");
-    uLi.innerHTML = "Your messages with " + beaver.messages[i].from;
+    uLi.appendChild(this.createCloseChatButton());
+    uLi.appendChild(this.createChatTitle(beaver, i));
+    //create text to display and display it.
+    div = document.createElement("div");
+    div.classList.add("text");
     beaver2 = beaver.messages[i].from;
     text = profileControl.displayMessage(parseInt(beaver.id), beaver2);
     for (var o = 0; o < text.length; o++) {
-      uLi.appendChild(this.createMessage(text[o]));
+      div.appendChild(this.createMessage(text[o]));
+      uLi.appendChild(div);
       ul.appendChild(uLi);
     };
+
+    uLi.appendChild(this.createChatInput(beaver, i));
   };
+  //make the chat scroll to bottom when message sent.
+  var scroll = document.querySelector(".text");
+  scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
 };
 
 profileViewer.displayRelations = function(){
@@ -149,10 +159,38 @@ profileViewer.createModifyButton = function(){
 
 profileViewer.createMessage = function(text){
   message = document.createElement("p");
-  message.classList.add("text");
   message.innerHTML = text;
   return message;
-}
+};
+
+profileViewer.createChatTitle = function(beaver, i){
+  id = beaver.messages[i].from;
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    if (beaversList.beavers[i].id === id){
+      name = beaversList.beavers[i].name;
+    }
+  };
+  title = document.createElement("h3");
+  title.textContent = "Talk with " + name;
+  return title;
+};
+
+profileViewer.createCloseChatButton = function(){
+  button = document.createElement("button");
+  button.classList.add("closeChat");
+  button.textContent = "X";
+  return button;
+};
+
+profileViewer.createChatInput = function(beaver, i){
+  console.log(beaver, i)
+  id = beaver.messages[i].from;
+  input = document.createElement("input");
+  input.setAttribute("id", id);
+  input.classList.add("sendMessage");
+  input.setAttribute("placeholder", "Say something...");
+  return input;
+};
 
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
@@ -194,6 +232,26 @@ profileViewer.setupEventListener = function(){
       console.log(this);
     })
 
+  };
+
+  for (var i = 0; i < document.querySelectorAll("li.messages").length; i++) {
+    document.querySelectorAll(".closeChat")[i].addEventListener("click", function(){
+      this.style.display = "none";
+    });
+  };
+
+  for (var i = 0; i < document.querySelectorAll(".sendMessage").length; i++) {
+    document.querySelectorAll(".sendMessage")[i].addEventListener("keypress", function(e){
+        if (e.keyCode == 13){
+          message = this.value;
+          console.log(message);
+          beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
+          recipient = profileControl.idToIndex(parseInt(this.id));
+          console.log(recipient, beaver1);
+          buttonsControl.addMessage(beaver1, recipient, message);
+        }
+
+    });
   };
 
 
