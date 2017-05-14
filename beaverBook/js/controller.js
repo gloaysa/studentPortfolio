@@ -271,3 +271,11 @@ profileControl.displayMessage = function(from, to){
     }
   };
 };
+
+profileControl.idToIndex = function(id){
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    if(beaversList.beavers[i].id === id){
+      return beaversList.beavers.indexOf(beaversList.beavers[i]);
+    }
+  }
+};
