@@ -112,19 +112,51 @@ hr {
   box-shadow: 0px 0px 0px #000;
 }
 
-#untrack {
-  width: 10em;
-  background: #ff4040;
-}
-
 .modifyProfile {
   background: steelBlue;
 }
+/* MESSAGES */
+ul.messages {
+  display: inline;
+  position: absolute;
+  left: auto;
+  right: 0;
+  padding: 5px;
+}
 
-.noTracking {
-  background: #ff8080;
+.messages h3 {
+  color: white;
+  position: top;
+  padding: 0 5px;
+}
+
+li.messages {
+  background: purple;
+  width: 250px;
+  height: 280px;
+  margin: 10px;
+  border: 1px solid black;
+  display: inline-block;
+
 
 }
+
+li .sendMessage {
+  height: 40px;
+  width: 95%;
+  margin: 2px;
+}
+
+.text {
+  background: red;
+  height: 150px;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+/* RELATIONS */
+
+
 
 a {
   color: inherit;
