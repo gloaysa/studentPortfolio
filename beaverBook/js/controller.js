@@ -133,6 +133,23 @@ buttonsControl.deleteRelation = function(beaver1, beaver2){
   profileViewer.displayBeaver();
 };
 
+buttonsControl.addMessage = function(sender, recipient, message){
+  id1 = beaversList.beavers[sender].id
+  id2 = beaversList.beavers[recipient].id
+  if (beaversList.beavers[recipient].messages.length > 0){
+    for (var i = 0; i < beaversList.beavers[recipient].messages.length; i++) {
+      if (beaversList.beavers[recipient].messages[i].from === id1){
+        beaversList.beavers[sender].messages[i].text.push("Send by me: " + message);
+        beaversList.beavers[recipient].messages[i].text.push("Send by " + name + ": " + message);
+      };
+    };
+  } else {
+      beaversList.beavers[sender].messages.push({from: id2, text: ["Send by me: " + message]});
+      beaversList.beavers[recipient].messages.push({from: id1, text: ["Send by " + name + ": " + message]});
+  };
+
+};
+
 
 //**PROFILE**
 var profileControl = {};
@@ -217,4 +234,24 @@ profileControl.areFriends = function(profileBeaver){
     }
   }
   return friends;
+};
+
+//checks if the beaver has messages.
+profileControl.hasMessage = function(id){
+  if (beaversList.beavers[id].messages.length > 0) {
+    return true;
+  } else {
+    return false
+  }
+};
+
+//return text in messages beetwen two given beavers.
+profileControl.displayMessage = function(from, to){
+  beaver1 = beaversList.beavers[from];
+  beaver2 = beaversList.beavers[to];
+  for (var i = 0; i < beaver1.messages.length; i++) {
+    if (beaver1.messages[i].from === beaver2.id){
+      return beaver1.messages[i].text;
+    }
+  };
 };
