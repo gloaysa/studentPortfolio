@@ -24,7 +24,6 @@ beaversList.beavers = [
       tracked: true,
       image: "https://s-media-cache-ak0.pinimg.com/originals/a7/63/f2/a763f2dbad57863ee0081fe7c6bfa321.png",
       lastSelected: false,
-      relations: [],
       messages: []
     },
     {
@@ -36,7 +35,6 @@ beaversList.beavers = [
       tracked: false,
       image: "http://www.bkgm.com/articles/Fletcher/BeaverTheory/beaver.png",
       lastSelected: false,
-      relations: [],
       messages: []
     },
     {
@@ -48,7 +46,6 @@ beaversList.beavers = [
       tracked: false,
       image: "http://www.pngmart.com/files/3/Beaver-PNG-Free-Download.png",
       lastSelected: false,
-      relations: [],
       messages: []
     }
 ];

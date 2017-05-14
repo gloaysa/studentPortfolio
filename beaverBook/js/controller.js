@@ -148,13 +148,6 @@ profileControl.isItFriend = function(id){
   };
 };
 
-//adds given relation to the given beavers relations[].
-profileControl.requesting = function(requestedId, relation){
-  for (var i = 0; i < beaversList.beavers.length; i++) {
-    beaversList.beavers[i].id === requestedId ? beaversList.beavers[i].relations.push(relation) : "";
-  };
-};
-
 //check if beaver has friend request.
 profileControl.hasRequest = function(requested){
   acceptRequestButton = [];

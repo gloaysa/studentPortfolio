@@ -32,7 +32,6 @@ beaversList.addRelation = function(beaver1, beaver2){
   relation.beaver2 = beaver2;
   relation.status = false;
   this.relations.push(relation);
-  profileControl.requesting(beaver2, relation);
 
 };
 //adds the message to the message history and allerts of success or failure.
