@@ -53,7 +53,7 @@ profileViewer.displayRelations = function(){
         uLi.classList.remove("friend");
         uLi.appendChild(this.createRequestButton());
       };
-            
+
       uLi.appendChild(this.createMessageButton());
       var numberLi = ul.appendChild(uLi);
       numberLi.id = i;
@@ -145,7 +145,9 @@ profileViewer.setupEventListener = function(){
 
   for (var i = 0; i < document.querySelectorAll(".unfriend").length; i++) {
     document.querySelectorAll(".unfriend")[i].addEventListener("click", function(){
-      console.log(this);
+      beaver1 = parseInt(document.getElementsByTagName("li")[0].id);
+      beaver2 = parseInt(this.parentNode.id);
+      buttonsControl.deleteRelation(beaver1, beaver2);
     });
 
   };

@@ -98,13 +98,6 @@ buttonsControl.untrackAll = function(){
 
 };
 
-buttonsControl.request = function(requester, requested){
-  beaver1 = beaversList.beavers[requester].id;
-  beaver2 = beaversList.beavers[requested].id;
-  beaversList.addRelation(beaver1, beaver2);
-  profileViewer.displayRelations();
-};
-
 //'profile' button
 buttonsControl.profileButton = function(){
   var profile = document.querySelectorAll(".profileButton");
@@ -115,6 +108,29 @@ buttonsControl.profileButton = function(){
     });
   };
 
+};
+
+buttonsControl.request = function(requester, requested){
+  beaver1 = beaversList.beavers[requester].id;
+  beaver2 = beaversList.beavers[requested].id;
+  beaversList.addRelation(beaver1, beaver2);
+  profileViewer.displayRelations();
+};
+
+//Searches for the beavers' id.
+//Find the relation id and passes to beaversList.deleteRelation.
+buttonsControl.deleteRelation = function(beaver1, beaver2){
+  id1 = beaversList.beavers[beaver1].id;
+  id2 = beaversList.beavers[beaver2].id;
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if ((beaversList.relations[i].beaver1 === id1 || beaversList.relations[i].beaver2 === id1) &&
+      (beaversList.relations[i].beaver1 === id2 || beaversList.relations[i].beaver2 === id2 ) &&
+      (beaversList.relations[i].status === true)){
+        id = beaversList.relations[i].id;
+        beaversList.deleteRelation(id);
+      }
+  };
+  profileViewer.displayBeaver();
 };
 
 
