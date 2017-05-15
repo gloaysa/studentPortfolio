@@ -218,6 +218,25 @@ profileControl.hasRequest = function(requested){
    };
 };
 
+profileControl.waitingRequest = function(requested){
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if ((beaversList.relations[i].beaver1 === requested.id || beaversList.relations[i].beaver2 === requested.id) &&
+        beaversList.relations[i].status === false){
+      return true;
+    }
+  };
+};
+
+//checks if a given beaver has friends.
+profileControl.hasFriends = function(beaver){
+  for (var i = 0; i < beaversList.relations.length; i++) {
+    if ((beaversList.relations[i].beaver1 === beaver.id || beaversList.relations[i].beaver2 === beaver.id) &&
+        beaversList.relations[i].status === true){
+      return true;
+    }
+  };
+};
+
 //accept friend request and adds beaver to friendlist.
 profileControl.acceptRequest = function(id) {
   for (var i = 0; i < beaversList.relations.length; i++) {
