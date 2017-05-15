@@ -23,22 +23,30 @@ body {
   width: 100px;
 }
 
-.container .profile, h2{
+.container {
+  display: block;
+  text-align: center;
+}
+
+.container .profile, .container .friends {
   text-align: center;
   text-shadow: 1px 2px 1px grey;
   color: #333;
-  width: 90%;
-  overflow: auto;
+  width: 60%;
   margin: 20px auto;
   padding: 10px;
-  display: block;
+  display: inline;
+}
+
+.container .friends {
+  width: 20%;
 }
 
 .container .profile li {
   text-align: left;
   float: left;
   list-style: none;
-  width: 80%;
+  width: 60%;
   margin: 3%;
   padding: 0;
   margin-bottom: 0.5em;
@@ -46,17 +54,6 @@ body {
   border-radius: 3px 3px 0 0;
 }
 
-/* useless so far
-
-/*.container input {
-  margin: 0.3em 0 0 0;
-  border: none;
-  height: 30px;
-  background-color: #666;
-  color: white;
-  font-weight: 700;
-  font-size: 1.2em;
-}*/
 
 .profile li p {
   color: black;
@@ -86,7 +83,7 @@ body {
 
 .profile li img {
   margin: 5px;
-  width: 30%;
+  width: 20%;
   border: 1px solid steelBlue;
   border-radius: 50%;
 }
@@ -117,7 +114,7 @@ hr {
   background: #ff8080
 }
 
-/* MESSAGES */
+/* CHAT */
 ul.messages {
   display: inline;
   position: absolute;
@@ -161,31 +158,39 @@ li .sendMessage {
 
 /* RELATIONS */
 
-ul.relations, h2{
-  text-align: center;
+ul.relations, ul.friends, h2{
   text-shadow: 1px 2px 1px grey;
   color: #333;
   width: 50%;
-  overflow: auto;
+  display: block;
   margin: 20px auto;
   padding: 10px;
-  display: block;
+
 }
 
-ul.relations li {
+h2 {
+  width: auto;
+}
+
+ul.relations li, ul.friends li {
+  text-shadow: none;
   text-align: center;
   float: left;
   list-style: none;
   width: 300px;
   height: 300px;
   margin: 3%;
-  padding: 0;
   margin-bottom: 0.5em;
   border: 5px solid steelBlue;
   border-radius: 3px 3px 0 0;
 }
 
-.relations li p {
+ul.relations {
+  float: none;
+  display: block;
+}
+
+.relations li p, .friends li p {
   color: black;
   text-shadow: none;
   text-align: left;
@@ -194,25 +199,24 @@ ul.relations li {
 
 }
 
-.relations .name {
+.relations .name, .friend .name {
   font-size: 1.5em;
 }
 
-.relations .name, .relations .sex {
+.relations .name, .relations .sex, .friend .name, .friend .sex {
   text-transform: uppercase;
 }
 
-.relations .age, .relations .sex, .relations .location {
+.relations .age, .relations .sex, .relations .location, .friend .age, .friend .sex, .friend .location {
   font-size: 1.2em;
 }
 
-.relations .name, .relations .age, .relations .sex, .relations .location {
+.relations .name, .relations .age, .relations .sex, .relations .location, .friend .name, .friend .age, .friend .sex, .friend .location {
   display: block;
   margin-top: 5px;
 }
 
-.relations li img {
-  visibility: hidden;
+.relations li img, .friends li.friend img {
   margin: 5px;
   width: 100px;
   height: 100px;
@@ -221,16 +225,9 @@ ul.relations li {
 
 }
 
-.relations li.friend img {
-  visibility: visible;
-  margin: 5px;
-  width: 100px;
-  height: 100px;
-  border: 1px solid steelBlue;
-  border-radius: 50%;
-}
 
-.request, .message {
+
+.request, .message, .unfriend{
   background: steelBlue;
   font-size: 16px;
   display: inline;
@@ -244,7 +241,12 @@ ul.relations li {
 
 }
 
-.request:active, .message:active {
+.unfriend {
+  font-size: 16px;
+  background: #ff8080
+}
+
+.request:active, .message:active, .unfriend:active {
   box-shadow: 0px 0px 0px #000;
 }
 
