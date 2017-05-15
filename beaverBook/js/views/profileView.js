@@ -39,6 +39,7 @@ profileViewer.displayBeaver = function(){
   };
   this.displayMessages(theBeaver);
   this.displayRelations();
+  this.displayFriends();
 
 };
 
@@ -71,21 +72,40 @@ profileViewer.displayMessages = function(beaver){
   };
 };
 
-profileViewer.displayRelations = function(){
-  var ul = document.querySelector(".relations");
+profileViewer.displayFriends = function() {
+  var ul = document.querySelector("ul.friends");
   ul.textContent = "";
   for (var i = 0; i < beaversList.beavers.length; i++) {
-    if(!beaversList.beavers[i].lastSelected){
-      var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
+    var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
+    if(!beaversList.beavers[i].lastSelected && isItFriend) {
       var uLi = document.createElement("li");
       uLi.appendChild(this.createImageProfile(i));
       var pLi = document.createElement("p");
       pLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);;
       uLi.appendChild(pLi);
-      if (isItFriend) {
-        uLi.classList.add("friend");
-        uLi.appendChild(this.createUnfriendButton());
-      } else {
+      uLi.classList.add("friend");
+      uLi.appendChild(this.createUnfriendButton());
+      uLi.appendChild(this.createMessageButton());
+      var numberLi = ul.appendChild(uLi);
+      numberLi.id = i;
+      ul.appendChild(uLi);
+    }
+  };
+};
+
+profileViewer.displayRelations = function(){
+  var ul = document.querySelector(".relations");
+  ul.textContent = "";
+  for (var i = 0; i < beaversList.beavers.length; i++) {
+    var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
+    if(!beaversList.beavers[i].lastSelected && !isItFriend){
+      var uLi = document.createElement("li");
+      uLi.appendChild(this.createImageProfile(i));
+      var pLi = document.createElement("p");
+      pLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);;
+      uLi.appendChild(pLi);
+      uLi.classList.remove("friend");
+      if(!profileControl.waitingRequest(beaversList.beavers[i])){
         uLi.classList.remove("friend");
         uLi.appendChild(this.createRequestButton());
       };
@@ -132,7 +152,7 @@ profileViewer.createRequestButton = function(){
 profileViewer.createUnfriendButton = function(){
   button = document.createElement("button");
   button.classList.add("unfriend");
-  button.textContent = "Remove friend";
+  button.textContent = "Remove";
   return button;
 
 };
@@ -203,6 +223,7 @@ profileViewer.setupEventListener = function(){
       beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
       beaver2 = parseInt(this.parentNode.id);
       buttonsControl.request(beaver1, beaver2);
+      console.log("Request sent to " + beaversList.beavers[profileControl.idToIndex(beaver2)].name);
     });
 
   };
