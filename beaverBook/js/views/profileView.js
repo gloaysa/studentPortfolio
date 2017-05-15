@@ -65,8 +65,10 @@ profileViewer.displayMessages = function(beaver){
     uLi.appendChild(this.createChatInput(beaver, i));
   };
   //make the chat scroll to bottom when message sent.
-  var scroll = document.querySelector(".text");
-  scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
+  if(document.querySelector(".text")){
+    var scroll = document.querySelector(".text");
+    scroll.scrollTop = scroll.scrollHeight - scroll.clientHeight;
+  };
 };
 
 profileViewer.displayRelations = function(){
@@ -76,7 +78,10 @@ profileViewer.displayRelations = function(){
     if(!beaversList.beavers[i].lastSelected){
       var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
       var uLi = document.createElement("li");
-      uLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);
+      uLi.appendChild(this.createImageProfile(i));
+      var pLi = document.createElement("p");
+      pLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);;
+      uLi.appendChild(pLi);
       if (isItFriend) {
         uLi.classList.add("friend");
         uLi.appendChild(this.createUnfriendButton());

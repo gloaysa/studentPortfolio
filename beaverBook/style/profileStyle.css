@@ -95,11 +95,12 @@ hr {
   clear: both;
 }
 
-.modifyProfile {
+#goHome, .modifyProfile, .acceptRequest{
   font-size: 16px;
+  background: steelBlue;
   display: inline;
   border: none;
-  width: 6.5em;
+  width: auto;
   border-radius: 5px;
   text-transform: uppercase;
   margin: 2px;
@@ -108,13 +109,14 @@ hr {
 
 }
 
-.modifyProfile:active {
+#goHome:active, .modifyProfile:active, .acceptRequest:active {
   box-shadow: 0px 0px 0px #000;
 }
 
-.modifyProfile {
-  background: steelBlue;
+.acceptRequest {
+  background: #ff8080
 }
+
 /* MESSAGES */
 ul.messages {
   display: inline;
@@ -131,11 +133,13 @@ ul.messages {
 }
 
 li.messages {
-  background: purple;
+  background: steelBlue;
   width: 250px;
   height: 280px;
   margin: 10px;
   border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 3px 7px 10px grey;
   display: inline-block;
 
 
@@ -148,16 +152,103 @@ li .sendMessage {
 }
 
 .text {
-  background: red;
+  background: white;
   height: 150px;
+  padding-left: 5px;
   border: 1px solid black;
   overflow: auto;
 }
 
 /* RELATIONS */
 
+ul.relations, h2{
+  text-align: center;
+  text-shadow: 1px 2px 1px grey;
+  color: #333;
+  width: 50%;
+  overflow: auto;
+  margin: 20px auto;
+  padding: 10px;
+  display: block;
+}
 
+ul.relations li {
+  text-align: center;
+  float: left;
+  list-style: none;
+  width: 300px;
+  height: 300px;
+  margin: 3%;
+  padding: 0;
+  margin-bottom: 0.5em;
+  border: 5px solid steelBlue;
+  border-radius: 3px 3px 0 0;
+}
 
+.relations li p {
+  color: black;
+  text-shadow: none;
+  text-align: left;
+  padding: 0 2px;
+  margin: 10px;
+
+}
+
+.relations .name {
+  font-size: 1.5em;
+}
+
+.relations .name, .relations .sex {
+  text-transform: uppercase;
+}
+
+.relations .age, .relations .sex, .relations .location {
+  font-size: 1.2em;
+}
+
+.relations .name, .relations .age, .relations .sex, .relations .location {
+  display: block;
+  margin-top: 5px;
+}
+
+.relations li img {
+  visibility: hidden;
+  margin: 5px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid steelBlue;
+  border-radius: 50%;
+
+}
+
+.relations li.friend img {
+  visibility: visible;
+  margin: 5px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid steelBlue;
+  border-radius: 50%;
+}
+
+.request, .message {
+  background: steelBlue;
+  font-size: 16px;
+  display: inline;
+  border: none;
+  width: 8.5em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 2px;
+  outline: none;
+  box-shadow: 1px 1px 2px #000;
+
+}
+
+.request:active, .message:active {
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* --- */
 a {
   color: inherit;
   font-family: inherit;
