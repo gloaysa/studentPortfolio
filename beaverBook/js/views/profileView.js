@@ -88,7 +88,7 @@ profileViewer.displayFriends = function() {
       uLi.appendChild(this.createMessageButton());
       var numberLi = ul.appendChild(uLi);
       numberLi.id = i;
-      ul.appendChild(uLi);
+      this.setupEventListener();
     }
   };
 };
@@ -262,7 +262,7 @@ profileViewer.setupEventListener = function(){
 
   for (var i = 0; i < document.querySelectorAll("li.messages").length; i++) {
     document.querySelectorAll(".closeChat")[i].addEventListener("click", function(){
-      this.style.display = "none";
+      this.parentNode.style.display = "none";
     });
   };
 
