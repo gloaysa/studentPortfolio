@@ -38,8 +38,8 @@ profileViewer.displayBeaver = function(){
     }
   };
   this.displayMessages(theBeaver);
-  this.displayRelations();
   this.displayFriends();
+  this.displayRelations();
 
 };
 
@@ -47,7 +47,6 @@ profileViewer.displayMessages = function(beaver){
   var ul = document.querySelector(".messages");
   ul.textContent = "";
   for (var i = 0; i < beaver.messages.length; i++) {
-    console.log(beaver.messages[i]);
     var uLi = document.createElement("li");
     uLi.classList.add("messages");
     uLi.appendChild(this.createCloseChatButton());
@@ -88,9 +87,9 @@ profileViewer.displayFriends = function() {
       uLi.appendChild(this.createMessageButton());
       var numberLi = ul.appendChild(uLi);
       numberLi.id = i;
-      this.setupEventListener();
     }
   };
+
 };
 
 profileViewer.displayRelations = function(){
@@ -127,10 +126,6 @@ profileViewer.stringifyBeaver = function(beaver) {
                 "<span class = \"location\"> <strong>Favourite places:</strong><br>" +
                 beaver.location + "</span>";
   return sBeaver;
-
-};
-
-profileViewer.stringifyRelation = function(){
 
 };
 
@@ -188,6 +183,7 @@ profileViewer.createMessage = function(text){
   return message;
 };
 
+//create chat header with beaver name.
 profileViewer.createChatTitle = function(beaver, i){
   id = beaver.messages[i].from;
   for (var i = 0; i < beaversList.beavers.length; i++) {
@@ -217,6 +213,8 @@ profileViewer.createChatInput = function(beaver, i){
   return input;
 };
 
+
+//**LISTENERS**
 profileViewer.setupEventListener = function(){
   for (var i = 0; i < document.querySelectorAll(".request").length; i++) {
     document.querySelectorAll(".request")[i].addEventListener("click", function(){
@@ -270,10 +268,8 @@ profileViewer.setupEventListener = function(){
     document.querySelectorAll(".sendMessage")[i].addEventListener("keypress", function(e){
         if (e.keyCode == 13){
           message = this.value;
-          console.log(message);
           beaver1 = beaversList.beavers.indexOf(profileControl.mainBeaver());
           recipient = profileControl.idToIndex(parseInt(this.id));
-          console.log(recipient, beaver1);
           buttonsControl.addMessage(beaver1, recipient, message);
         }
 
