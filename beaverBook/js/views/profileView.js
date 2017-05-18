@@ -4,7 +4,7 @@ profileViewer.loadContent = function(){
   if (localStorage.hasOwnProperty("beaversRelation")){
     beaversList.relations = JSON.parse(localStorage.getItem("beaversRelation"))
   };
-  beaversList.beavers = JSON.parse(localStorage.getItem("beaver"));
+  beaversList.beavers = JSON.parse(localStorage.getItem("beaverList"));
 };
 
 profileViewer.displayBeaver = function(){
@@ -204,7 +204,6 @@ profileViewer.createCloseChatButton = function(){
 };
 
 profileViewer.createChatInput = function(beaver, i){
-  console.log(beaver, i)
   id = beaver.messages[i].from;
   input = document.createElement("input");
   input.setAttribute("id", id);
