@@ -78,6 +78,7 @@ profileViewer.displayFriends = function() {
     var isItFriend = profileControl.isItFriend(beaversList.beavers[i].id);
     if(!beaversList.beavers[i].lastSelected && isItFriend) {
       var uLi = document.createElement("li");
+      uLi.appendChild(this.createProfileButton(i));
       uLi.appendChild(this.createImageProfile(i));
       var pLi = document.createElement("p");
       pLi.innerHTML = this.stringifyBeaver(beaversList.beavers[i]);;
@@ -135,6 +136,15 @@ profileViewer.createImageProfile = function(i) {
   image.classList.add("pictureProfile");
   return image;
 };
+
+profileViewer.createProfileButton = function(i) {
+  var profile = document.createElement("button");
+  id = beaversList.beavers[i].id
+  profile.id = id;
+  profile.classList.add("profileButton");
+  profile.innerHTML = "<i class=\"fa fa-id-card\"></i> Profile";
+  return profile;
+}
 
 profileViewer.createRequestButton = function(){
   button = document.createElement("button");
@@ -275,5 +285,6 @@ profileViewer.setupEventListener = function(){
     });
   };
 
+  buttonsControl.profileButton();
 
 };

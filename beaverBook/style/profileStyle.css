@@ -227,7 +227,7 @@ ul.relations {
 
 
 
-.request, .message, .unfriend{
+.request, .message, .unfriend, .profileButton{
   background: steelBlue;
   font-size: 16px;
   display: inline;
@@ -246,7 +246,7 @@ ul.relations {
   background: #ff8080
 }
 
-.request:active, .message:active, .unfriend:active {
+.request:active, .message:active, .unfriend:active, .profileButton:active {
   box-shadow: 0px 0px 0px #000;
 }
 
