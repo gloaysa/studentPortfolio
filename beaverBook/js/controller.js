@@ -43,6 +43,7 @@ handlers.untrackAll = function(){
 
 //**BUTTONS**
 
+//Listeners in profileView.js call this functions.
 var buttonsControl = {};
 
 //'add beaver' button
@@ -176,15 +177,16 @@ profileControl.goToProfile = function(id){
       beaversList.beavers[i].lastSelected = true :
       beaversList.beavers[i].lastSelected = false;
   }
-  localStorage.setItem("beaver", JSON.stringify(beaversList.beavers));
+  localStorage.setItem("beaverList", JSON.stringify(beaversList.beavers));
   window.location.href = "profile.html";
 };
 
+//Store beavers & relations objects.
 profileControl.goToHome = function(){
   localStorage.setItem("beaversList", JSON.stringify(beaversList.beavers));
   localStorage.setItem("beaversRelation", JSON.stringify(beaversList.relations));
   window.location.href = "home.html";
-}
+};
 
 //check if the given relation id have true or false status.
 profileControl.isItFriend = function(id){
@@ -218,6 +220,7 @@ profileControl.hasRequest = function(requested){
    };
 };
 
+//Checks if given beaver has any pending friendship request.
 profileControl.waitingRequest = function(requested){
   for (var i = 0; i < beaversList.relations.length; i++) {
     if ((beaversList.relations[i].beaver1 === requested.id || beaversList.relations[i].beaver2 === requested.id) &&
@@ -290,7 +293,7 @@ profileControl.displayMessage = function(from, to){
     }
   };
 };
-
+//Converts the given beaver id to the index in the array of that beaver.
 profileControl.idToIndex = function(id){
   for (var i = 0; i < beaversList.beavers.length; i++) {
     if(beaversList.beavers[i].id === id){
