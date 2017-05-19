@@ -178,6 +178,9 @@ profileControl.goToProfile = function(id){
       beaversList.beavers[i].lastSelected = false;
   }
   localStorage.setItem("beaverList", JSON.stringify(beaversList.beavers));
+  if (beaversList.relations){
+    localStorage.setItem("beaversRelation", JSON.stringify(beaversList.relations));
+  }
   window.location.href = "profile.html";
 };
 
