@@ -19,13 +19,13 @@ Be ready, this file (and project) is loooong.
   + Imports: controller.js, homeStyle.css, beaversModel.js, homeView.js.  
   + Interactions:
 
-  		- UNLIKE ALL BEAVERS: be able to untrack all beavers when funding is cut.  
-  		- RELIKE ALL BEAVERS: rich daddy. :heavy_exclamation_mark:
-  		- UNLIKE SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.  
-  		- LIKE A SINGLE BEAVER: maybe it wasn't dead!  
-  		- ADD A BEAVER: using some input fields to collect all the needed info.  
-  		- SPOT A BEAVER: prompt the user for the new location and add it to the beaver list.  
-  		- VIEW A BEAVER's PROFILE:  navigate to the profile page and render the chosen beaver's profile.
+  	- UNLIKE ALL BEAVERS: be able to untrack all beavers when funding is cut.  
+  	- RELIKE ALL BEAVERS: rich daddy. :heavy_exclamation_mark:
+  	- UNLIKE SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.  
+  	- LIKE A SINGLE BEAVER: maybe it wasn't dead!  
+  	- ADD A BEAVER: using some input fields to collect all the needed info.  
+  	- SPOT A BEAVER: prompt the user for the new location and add it to the beaver list.  
+  	- VIEW A BEAVER's PROFILE:  navigate to the profile page and render the chosen beaver's profile.
 
 2. /**profile.html**: A dynamic html page that shows all the beaver's profiles.
 
