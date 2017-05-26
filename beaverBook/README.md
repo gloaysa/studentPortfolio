@@ -1,42 +1,56 @@
-# Project: Beaver Browser
+# Project: BeaverBook™️ (browser edition)
 
 [![Elium Academy](http://www.zoomby.es/img/Elium-Logo-200-px-Black-PNG.png)](http://www.elium.academy)
 
 
 ### Prompt
 
-> You are an aspiring naturalist tracking the behavior of local Urban Beavers. So you're going to create your own web application that will help you to add new beavers that you may find, check the ones that you are currently tracking and add new locations if you spot them again.
+> Beavers are sick of you.  
+> They stole your laptop and now all use your tracking software as a Facebook For Beavers: BeaverBook™️
 
 ---
 
-Be ready, this file is loooong.
+Be ready, this file (and project) is loooong.
 
-#### This project contains 5 files: 1 HTML, 1 CSS and 3 Javascript files.
+#### This project contains 9 files: 2 HTML, 2 CSS and 5 Javascript files.
 
-1. **beavers.html**: The site that the people will see and use. The structure is up to you, but it must contain:  
+1. /**home.html**: The site that the people will see and use. The structure is up to you, but it must contain *(you can copy & paste it from the last project and modify when need it)*:  
 
-  + Imports: refering to the .css and all the .js files.  
+  + Imports: controller.js, homeStyle.css, beaversModel.js, homeView.js.  
   + Interactions:
 
-  		- UNTRACK ALL BEAVERS: be able to untrack all beavers when funding is cut.
+  		- UNLIKE ALL BEAVERS: be able to untrack all beavers when funding is cut.  
+  		- RELIKE ALL BEAVERS: rich daddy. :heavy_exclamation_mark:
+  		- UNLIKE SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.  
+  		- LIKE A SINGLE BEAVER: maybe it wasn't dead!  
+  		- ADD A BEAVER: using some input fields to collect all the needed info.  
+  		- SPOT A BEAVER: prompt the user for the new location and add it to the beaver list.  
+  		- VIEW A BEAVER's PROFILE:  navigate to the profile page and render the chosen beaver's profile.
 
-  		- UNTRACK SINGLE BEAVER: maybe it died :( Or maybe you're just bored of it.
+2. /**profile.html**: A dynamic html page that shows all the beaver's profiles.
 
-  		- RETRACK A SINGLE BEAVER: maybe it wasn't dead!
+	+ Imports: controller.js, profileStyle.css, beaversModel.js, relationsModel.js, profileView.js.  
+	+ Interactions:
 
-  		- ADD A BEAVER: using some input fields to collect all the needed info.
+		- RETURN HOME: Go from profile.html to home.html.  
+		- NAVIGATE TO FRIEND BEAVERS PROFILE: By clicking on a friend beaver's name, display their profile.  
+		- SEND FRIEND REQUEST: Click on a not-friend beaver to send a request.  
+		- RESPOND TO FRIEND REQUEST: Have the option to accept or deny a request. If accepted, a relationship is added. Consider adding notifications to both parties.  
+		- SEND MESSAGE: Click a message button by a friend beaver, have a prompt for the new message, save the message to that relationship object, display updated message history.  
+		- UNFRIEND: Kill a friendship, does not need confirmation from the other.
 
-  		- SPOT A BEAVER: prompt the user for the new location and add it to the beaver list.
+3. styles/**homeStyle.css**: A file to make the home.html file looks pretty :dizzy: All the content is optional. *(Copy and paste it from last project, modifying when need it)*
 
-2. **beavers.css**: A file to make the HTML looks pretty :sparkles: All the content is optional.
+4. styles/**profileStyle.css**: A file to make the profile.html file looks pretty :sparkles: All the content is optional.
 
-3. **model.js**: All the functionality connected to storing, accessing, modifying beavers. It will have a main object storing other objects and functions. No libraries, just vanilla javascript :)
+5. scripts/models/**model.js**: All the functionality connected to storing, accessing, modifying beavers. It will have a main object storing other objects and functions. *(Copy and paste it from last project, modifying when need it)*.
 
 	+ beaversList: the main object, contains objects and functions.  
 	**PROPERTIES**
 
 		- beaverRecord: object. Their properties must be:
 
+			* ID: int, a unique ID assigned at document creation. no two may ever have the same. :heavy_exclamation_mark:  
 			* NAME: string, the beaver's name.  
 			* AGE: integer, the beaver's age.  
 			* SEX: string, indicating beaver's sex.  
@@ -65,92 +79,141 @@ Be ready, this file is loooong.
 		- untrackAll: function. Change all the beaver's tracked property to false.
 
 			* arguments: nada.  
-			* returns: nada.
+			* returns: success/not message.
 
 		- inventoryBeavers: function. Extracts the 'name' from each beaver being tracked and pushes it into the 'trackedBeavers' array.
 
 			* no arguments.  
 			* returns: array.
 
-4. **view.js**: All functionality connected to making something visible on screen (DOM manipulation). Again, no libraries, plain javascript:
+		- modifyBeaver: accesses the correct beaver and modify it. :heavy_exclamation_mark:  
 
-	+ beaverViewer: the main object. All the functions are stored inside:  
+			* arguments: a beaver id and the info to be updated.  
+			* returns: success/not message and new beaver.
+
+6. scripts/models/**relationsModel.js**: all functionality connected to storing, accessing, modifying beavers.
+
+	+ relationshipRecord: object.  
+	**PROPERTIES**
+
+		- ID: unique id for this record.
+		- BEAVER1: the id of the beaver to send the request.
+		- BEAVER2: the id of the beaver requested.
+		- MESSAGES: data structure storing the message history between these two beavers.
+		- STATUS: Indicates pending or responded to. It could be a boolean, you have to design this one to fit how you envision beavers classifying their relationships. Perhaps a string so 'its complicated' is an option.  
+
+	+ beaversList: an object, contains objects and functions.  
+	**PROPERTIES**
+
+		- relations: array containing relationships records.  
+	**METHODS**
+
+		- changeStatus: accesses the status of the indicated record and change it.
+
+			* ARGUMENTS: Depends on how you choose to use status.  
+			* RETURNS: Success/not message.
+
+		- addRelation: Uses the arguments to create a new relationship object which is saved into 'relations' array. Status is set to default, messages data structure is initialized empty, and ID is generated.  
+
+			* ARGUMENTS: int, beaver ID 1 and beaver ID 2.  
+			* RETURNS: Success/not message.  
+
+		- addMessage: Adds the message to the message history and alerts of success or failure.  
+
+			* ARGUMENTS: string, the new message & int, the ID of the relationship.  
+			* RETURNS: Success/not message.  
+
+		- deleteRelation: Deletes the relation and returns an alert.  
+
+			* ARGUMENTS: ID of the relation to be deleted.  
+			* RETURNS: Success/not message.  
+
+7. scripts/views/**homeView.js**: All functionality connected to making something visible on screen (DOM manipulation). Nothing much will have changed here unless you want to fancy it up. *(Copy and paste it from last project, modifying when need it)*.
+
+	+ homeViewer: the main object. All the functions are stored inside:  
 	**METHODS**
 
 		- displayBeavers: it's the function used to display all the beavers. It creates a html 'ul' and populates it with beaver's profiles and all the buttons that entails. It doesn't take any argument. When it's called, it will display beavers info nicely.
 
 		- stringfyBeaver: reads through the properties of the beave object passed as argument and concatinates them into a string.
 
-			* arguments: a beaver object.  
-			* returns: a stringified version of the beaver object.
+			* ARGUMENTS: a beaver object.  
+			* RETURNS: a stringified version of the beaver object.
 
 		- createSpottedButton: creates a button with an specific class and some text inside. This is the button that will be used when the user spot a beaver to add the location.
 
-			* arguments: none or beaver's name (up to you).  
-			* returns: success message and the button, or just failure message.
+			* ARGUMENTS: none or beaver's name (up to you).  
+			* RETURNS: success message and the button, or just failure message.
 
 		- createTrackedButton: creates a button with an specific class and some nice text inside. This is the button that will be used to start/stop tracking an specific beaver.
 
-			* arguments: none or beaver's name (up to you).  
-			* returns: success message and the button.
+			* ARGUMENTS: none or beaver's name (up to you).  
+			* RETURNS: success message and the button.
 
 		- setupEventListeners: connects onclick events to buttons according to their class.
 
-			* arguments: nada.  
-			* returns: nada.
+			* ARGUMENTS: nada.  
+			* RETURNS: nada.
 
-5. **controller.js**: manipulates 'beaversList' and 'beaverViewer'. All the buttons call a method to this object. No libraries, vanilla Javascript.
+8. scripts/views/**profileView.js**: All functionality connected to making something visible on screen (DOM manipulation).  
 
-	+ handlers: main object. All the functions are stored inside:  
+	+ profileViewer: the main object. All the functions are stored inside:  
 	**METHODS**
 
-		- displayBeavers: calls 'beaverViewer.displayBeavers'.
+		- displayBeaver: displays the profile info for the beaver you're viewing.  
 
-			* arguments: nada.  
-			* returns: console.log success/not message.
+			* ARGUMENTS: ID of beaver object to profile.  
+			* RETURNS: Success/not message.  
 
-		- addBeaver: calls 'beaversList.addBeaver' and 'displayBeavers' methods.
+		- displayRelations: creates a UL and populates it with relationship infos and all the buttons that entails. Creates another list for all beavers that are not yet friends with this one.  
 
-			* arguments: nada.  
-			* returns: console.log success/not message.
+			* ARGUMENTS: ID of beaver object you're viewing.  
+			* RETURNS: Success/not message.  
 
-		- toggleTracked: tells 'beaversList.toggleTracked' to un/track an specific beaver.
+		- stringifyRelation: reads through the properties of the beave object, concatinating them into a string.  
 
-			* arguments: the beaver to track/untrack.  
-			* returns: nada.
+			* ARGUMENTS: a beaver object.  
+			* RETURNS: a stringified version of the beaver object.  
 
-		- spotBeaver: calls 'beaversList.spotBeaver' method with the new location and the beaver spotted. Then calls 'displayBeavers' method to refresh the info on the page.
+		- createRequestButton: creates a button with the request class and nice text, returning success message and a button or no success and no button.  
+		- createUnfriendButton: creates a button with the unfriend class and nice text, returning success message and a button or no success and no button.  
+		- createMessageButton: creates a button with the message class and nice text, returning success message and a button or no success and no button.  
+		- createModifyButton: creates a button with the modifyProfile class and nice text, returning success message and a button or no success and no button.  
+		- setupEventListeners: connects onclick events to buttons according to their class.
 
-			* arguments: it takes two arguments, the beaver spotted and the location.  
-			* returns: console.logs success/not message.
+			* ARGUMENTS: nada.  
+			* RETURNS: success/not message.
 
-		- untrackAll: calls 'beaversList.untrackAll' and 'displayBeavers' methods.
 
-			* arguments: nada.
-			* returns: nada.
+9. scripts/**controller.js**: manipulates the objects and functions of the 4 previous files. All the buttons call a method to this object. This will be a huge object, find a way you like to make this more manageable (maybe by giving controller several property objects). *(Copy and paste it from last project, and add all the new functions)*.
+
+
+	- **FUNCTIONALITIES**: everything from the previous project plus:
+
+		* profilePage: a handler for each functionality needed on the profile page that can't be completed using a handler from last project.  
+		* lastSelected: store a property that remembers the last beaver clicked. This will be helpful when navigating to a beaver's profile or sending a friend request.  
+		* relationshipManagement: you will need to 'duplicate' the beaver-based handlers so you can handle relationship objects.  
+		* navigation: handlers that manage going from home->profile, profile->home, profile->profile.  
+
 
 ---
 
 ### Usage example
 
-You see Patty at the liquor store, so you open your phone, click 'spot Patty' and enter 'liquor store' in the text field. Now her info includes the liquor store.
+- A beaver opens the site, clicks on their profile, adds a friend and waits to hear back.
 
-There's a new beaver on the metro today. You hand him your phone and ask him to register himself. He enters his name, age, sex, and 'line 5' into the text blanks. Now you've got another beaver profile on the home page.
+- A beaver goes to its profile and sent a message to Patty.
 
-Patty gets sick of you writting down what she does every day and threatens to call the police. You click 'untrack Patty' and now all you can see is her name and a big red 'X' next to it.
+- A beaver views Patty's profile to see if she is friends with Willard.
 
 ---
 
 ### Challenge
 
-1. Change the content of every button when the status changes. For example: the content of the 'track beaver' button could be something like "start tracking" when the beaver isn't being tracked and "stop tracking" when it's being tracked.
-
-2. Show on the page nicely the 'trackedBeavers' array. The content will change when the status of the 'tracked' property of each beaver changes. For example: when the user clicks on the 'track beaver' button, it will be showed on the page nicely the name of that beaver.
-
-3. (extra challengy) refactor your project to use classes instead of objects.
+1. (extra challengy) refactor your project to use classes instead of objects.
 
 ---
 
 ### RESOURCES
 
-[appendChild](https://developer.mozilla.org/en/docs/Web/API/Node/appendChild) | [parentNode](https://developer.mozilla.org/en/docs/Web/API/ParentNode)
+[Get a particular child of a parent](https://stackoverflow.com/questions/2398947/jquery-how-to-get-to-a-particular-child-of-a-parent) | [sessionStorage Attribute](https://www.w3.org/TR/webstorage/#the-sessionstorage-attribute)
